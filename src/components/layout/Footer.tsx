@@ -1,76 +1,68 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import Image from "next/image";
 
 export default function Footer() {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    const glow = glowRef.current;
+    if (!footer || !glow) return;
+
+    // Disable on mobile
+    if (window.innerWidth < 768) return;
+
+    // Idle floating animation (always alive)
+    gsap.to(glow, {
+      x: "+=40",
+      y: "+=30",
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // Mouse follow (relative to footer)
+    const move = (e: MouseEvent) => {
+      const rect = footer.getBoundingClientRect();
+
+      const x = e.clientX - rect.left - 250;
+      const y = e.clientY - rect.top - 250;
+
+      gsap.to(glow, {
+        x,
+        y,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+    };
+
+    footer.addEventListener("mousemove", move);
+    return () => footer.removeEventListener("mousemove", move);
+  }, []);
+
   return (
-    <footer className="relative bg-black pt-24 pb-12 text-white">
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: "easeOut" }} className="mx-auto max-w-7xl px-6">
-        {/* Top */}
-        <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-3">
-          {/* Brand */}
-          <div>
-            <h3 className="mb-4 text-xl font-semibold">Agenz</h3>
-            <p className="max-w-xs text-sm text-gray-400">A creative agency crafting meaningful digital experiences through design, motion, and technology.</p>
-          </div>
+    <footer ref={footerRef} className="relative h-screen overflow-hidden bg-black text-white">
+      {/* Glow Ball */}
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute left-0 top-0
+                   h-[500px] w-[500px] rounded-full
+                   bg-gradient-to-r from-purple-500/30 to-pink-500/30
+                   blur-3xl"
+      />
 
-          {/* Navigation */}
-          <div>
-            <p className="mb-4 text-sm uppercase tracking-widest text-gray-400">Navigation</p>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/" className="hover:text-gray-300">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-gray-300">
-                  Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-gray-300">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-gray-300">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+      {/* Center Logo */}
+      <div className="relative z-10 flex h-full items-center justify-center">
+        <Image src="/logo.png" alt="Agenz" width={680} height={680} priority className="opacity-95" />
+      </div>
 
-          {/* Social */}
-          <div>
-            <p className="mb-4 text-sm uppercase tracking-widest text-gray-400">Connect</p>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#" className="hover:text-gray-300" target="_blank">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-300" target="_blank">
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gray-300" target="_blank">
-                  Twitter / X
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-500 md:flex-row">
-          <p>© {new Date().getFullYear()} Agenz. All rights reserved.</p>
-          <p>Built with clarity & care.</p>
-        </div>
-      </motion.div>
+      {/* Bottom-left copyright */}
+      <p className="absolute bottom-8 left-8 z-10 text-sm text-gray-400">© 2026 Agenz</p>
     </footer>
   );
 }

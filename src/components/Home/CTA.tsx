@@ -7,9 +7,9 @@ export default function CTA() {
     <section className="relative overflow-hidden bg-black py-40 text-white">
       {/* Background glow */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[600px] w-[600px] 
+        className="absolute left-1/2 top-1/2 h-150 w-150 
                    -translate-x-1/2 -translate-y-1/2 rounded-full 
-                   bg-gradient-to-r from-purple-500/30 to-pink-500/30 blur-3xl"
+                   bg-linear-to-r from-purple-500/30 to-pink-500/30 blur-3xl"
         animate={{
           scale: [1, 1.1, 1],
         }}
