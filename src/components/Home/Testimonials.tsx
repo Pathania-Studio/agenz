@@ -58,7 +58,7 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className={`w-[300px] flex-shrink-0 rounded-2xl border 
+                className={`w-75 shrink-0 rounded-2xl border 
                 border-white/10 bg-white/5 p-6 backdrop-blur
                 ${i === index ? "ring-1 ring-purple-500/40" : ""}`}>
                 <p className="mb-6 text-gray-200">“{t.quote}”</p>

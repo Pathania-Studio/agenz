@@ -114,7 +114,7 @@ export default function WorkShowcase() {
       {/* Horizontal track */}
       <div ref={trackRef} className="flex h-screen">
         {projects.map((project, i) => (
-          <div key={i} className="work-panel relative h-full w-screen flex-shrink-0 overflow-hidden">
+          <div key={i} className="work-panel relative h-full w-screen shrink-0 overflow-hidden">
             {/* Background image */}
             <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover" />
 
@@ -130,7 +130,7 @@ export default function WorkShowcase() {
         ))}
       </div>
       {/* Exit gradient */}
-      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-gradient-to-b from-transparent to-black" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-b from-transparent to-black" />
     </section>
   );
 }
