@@ -61,12 +61,13 @@ const socialMediaPosts: SocialMediaPost[] = [
   },
   {
     id: 4,
-    platform: "youtube",
-    username: "Creative Media",
-    title: "Behind the Scenes: Making of Our Latest Campaign",
-    views: "24.5K views",
-    timestamp: "2 days ago",
-    thumbnail: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80",
+    platform: "facebook",
+    username: "Creative Media Studios",
+    content: "We're celebrating 1 million followers! None of this would be possible without your incredible support. Here's to creating more amazing content together! 🎉 #milestone #thankyou",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    likes: "5.2k",
+    comments: "324",
+    shares: "1.1k",
   },
 ];
 
