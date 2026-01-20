@@ -35,7 +35,7 @@ export default function FullscreenVideoModal() {
   return (
     <AnimatePresence>
       {active && (
-        <motion.div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div className="fixed inset-0 z-100 bg-black/90 flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           {/* BACKDROP */}
           <div className="absolute inset-0" onClick={() => window.dispatchEvent(new Event("close-video"))} />
 
