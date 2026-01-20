@@ -1,12 +1,13 @@
-import VideoStage from "./VideoStage";
-
-export default function Screen2ProofA() {
+export default function Screen1Authority() {
   return (
-    <div className="screen-2 absolute inset-0 h-full w-full opacity-0 bg-white">
-      <div className="h-full w-full relative">
-        <h2 className="absolute top-20 left-1/2 -translate-x-1/2 text-4xl font-semibold text-black">Our Work in Action</h2>
-        <VideoStage classBig="screen-2-big absolute left-[10%] top-1/2 -translate-y-1/2" classSmallA="screen-2-small-a absolute right-[15%] top-[20%]" classSmallB="screen-2-small-b absolute right-[10%] bottom-[15%]" />
-      </div>
+    <div className="screen-1 absolute m-auto inset-0 h-full w-full flex flex-col items-center justify-center text-white bg-white">
+      <h1 className="text-5xl font-semibold text-center mb-8 text-black">
+        We make corporate films
+        <br />
+        that build trust
+      </h1>
+
+      <div className="screen-1-mockup w-[70vw] max-w-5xl aspect-video rounded-2xl bg-black" />
     </div>
   );
 }
