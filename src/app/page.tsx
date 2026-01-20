@@ -1,12 +1,4 @@
 import CorporateSection from "../components/Corporate/CorporateSection";
-import Clients from "../components/Home/Clients";
-import CTA from "../components/Home/CTA";
-import Hero from "../components/Home/hero/Hero";
-import Testimonials from "../components/Home/Testimonials";
-import VideoIntro from "../components/Home/VideoIntro";
-import WorkShowcase from "../components/Home/WorkShowcase";
-import CorporateWorks from "../components/sections/CorporateWorks";
-
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
