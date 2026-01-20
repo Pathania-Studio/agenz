@@ -53,7 +53,7 @@ const designProjects: DesignProject[] = [
 const DeviceIcon = ({ device, className = "" }: { device: DeviceType; className?: string }) => {
   const iconProps = { className: cn("w-4 h-4", className) };
 
-  const icons: Record<DeviceType, JSX.Element> = {
+  const icons: Record<DeviceType, React.ReactNode> = {
     desktop: <Monitor {...iconProps} />,
     tablet: <Tablet {...iconProps} />,
     mobile: <Smartphone {...iconProps} />,
