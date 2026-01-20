@@ -1,3 +1,4 @@
+import CorporateSection from "../components/Corporate/CorporateSection";
 import Clients from "../components/Home/Clients";
 import CTA from "../components/Home/CTA";
 import Hero from "../components/Home/hero/Hero";
@@ -9,33 +10,33 @@ import CorporateWorks from "../components/sections/CorporateWorks";
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         <Hero />
-      </div>
+      </div> */}
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         <VideoIntro />
-      </div>
+      </div> */}
 
       <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
-        <CorporateWorks />
+        <CorporateSection />
       </div>
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         <WorkShowcase />
-      </div>
+      </div> */}
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         <Clients />
-      </div>
+      </div> */}
 
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         <Testimonials />
-      </div>
+      </div> */}
 
-      <div className="w-full">
+      {/* <div className="w-full">
         <CTA />
-      </div>
+      </div> */}
     </main>
   );
 }
