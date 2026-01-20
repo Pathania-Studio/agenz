@@ -5,37 +5,30 @@ const products = [
     id: 1,
     name: "Premium Headphones",
     category: "Audio",
-    images: ["/images/products/headphones-1.jpg", "/images/products/headphones-2.jpg", "/images/products/headphones-3.jpg"],
+    images: [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    ],
   },
   {
     id: 2,
     name: "Smart Watch Pro",
     category: "Wearables",
-    images: ["/images/products/watch-1.jpg", "/images/products/watch-2.jpg"],
+    images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1999&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80",
+    ],
   },
   {
     id: 3,
     name: "Wireless Earbuds",
     category: "Audio",
-    images: ["/images/products/earbuds-1.jpg", "/images/products/earbuds-2.jpg", "/images/products/earbuds-3.jpg"],
-  },
-  {
-    id: 4,
-    name: "DSLR Camera",
-    category: "Photography",
-    images: ["/images/products/camera-1.jpg", "/images/products/camera-2.jpg"],
-  },
-  {
-    id: 5,
-    name: "Gaming Console",
-    category: "Gaming",
-    images: ["/images/products/console-1.jpg", "/images/products/console-2.jpg"],
-  },
-  {
-    id: 6,
-    name: "Smartphone Pro",
-    category: "Mobile",
-    images: ["/images/products/phone-1.jpg", "/images/products/phone-2.jpg", "/images/products/phone-3.jpg"],
+    images: [
+      "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80",
+      "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+    ],
   },
 ];
 
@@ -52,19 +45,13 @@ export default function ProductShootsSection() {
               </div>
               <button className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">View All ({product.images.length})</button>
             </div>
-
             <div className={cn("grid gap-4", product.images.length > 2 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2")}>
               {product.images.map((image, index) => (
-                <div key={index} className={cn("aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center", index === 0 && product.images.length > 1 ? "sm:row-span-2" : "")}>
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-gray-400">
-                      {product.name} {index + 1}
-                    </span>
-                  </div>
+                <div key={index} className={cn("aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700", index === 0 && product.images.length > 1 ? "sm:row-span-2" : "")}>
+                  <img src={image} alt={`${product.name} - ${index + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                 </div>
               ))}
             </div>
-
             <div className="mt-6 flex items-center justify-between">
               <div className="flex -space-x-2">
                 {[1, 2, 3].map((i) => (

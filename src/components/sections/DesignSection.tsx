@@ -13,8 +13,11 @@ interface DesignProject {
   type: ProjectType;
   devices: DeviceType[];
   image: string;
+  role?: string;
+  scope?: string[];
+  duration?: string;
+  results?: string;
 }
-
 const designProjects: DesignProject[] = [
   {
     id: 1,
@@ -22,7 +25,7 @@ const designProjects: DesignProject[] = [
     description: "A modern e-commerce platform with focus on user experience and conversions.",
     type: "web",
     devices: ["desktop", "tablet", "mobile"],
-    image: "/images/design/ecommerce.jpg",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: 2,
@@ -30,7 +33,7 @@ const designProjects: DesignProject[] = [
     description: "Secure and intuitive mobile banking application design.",
     type: "mobile",
     devices: ["mobile"],
-    image: "/images/design/banking.jpg",
+    image: "https://images.unsplash.com/photo-1554224155-3a58922a22c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80",
   },
   {
     id: 3,
@@ -38,7 +41,7 @@ const designProjects: DesignProject[] = [
     description: "Analytics dashboard for a software as a service product.",
     type: "web",
     devices: ["desktop"],
-    image: "/images/design/dashboard.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: 4,
@@ -46,7 +49,7 @@ const designProjects: DesignProject[] = [
     description: "Mobile application for fitness tracking and workout plans.",
     type: "mobile",
     devices: ["mobile", "tablet"],
-    image: "/images/design/fitness.jpg",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
 ];
 
@@ -62,17 +65,16 @@ const DeviceIcon = ({ device, className = "" }: { device: DeviceType; className?
   return icons[device] || null;
 };
 
-const DeviceMockup = ({ device }: { device: DeviceType }) => {
+const DeviceMockup = ({ device, image, className = "" }: { device: DeviceType; image: string; className?: string }) => {
   const deviceClasses = {
     desktop: "hidden md:block w-full max-w-3xl h-4/5 bg-white dark:bg-gray-900 rounded-lg border-8 border-gray-900 dark:border-gray-700 overflow-hidden",
     tablet: "hidden md:block w-48 h-3/4 bg-white dark:bg-gray-900 rounded-lg border-8 border-gray-800 dark:border-gray-600 overflow-hidden",
     mobile: "w-24 h-48 bg-white dark:bg-gray-900 rounded-2xl border-8 border-gray-800 dark:border-gray-600 overflow-hidden",
   };
-
   return (
-    <div className={deviceClasses[device]}>
+    <div className={cn(deviceClasses[device], className, "relative")}>
       {device === "desktop" && (
-        <div className="absolute top-0 left-0 right-0 h-6 bg-gray-900 dark:bg-gray-700 flex items-center px-4">
+        <div className="absolute top-0 left-0 right-0 h-6 bg-gray-900 dark:bg-gray-700 flex items-center px-4 z-10">
           <div className="flex space-x-1.5">
             <span className="w-3 h-3 rounded-full bg-red-500" />
             <span className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -83,7 +85,7 @@ const DeviceMockup = ({ device }: { device: DeviceType }) => {
       {device === "tablet" && <div className="absolute top-0 left-0 right-0 h-4 bg-gray-800 dark:bg-gray-700" />}
       {device === "mobile" && (
         <>
-          <div className="absolute top-0 left-0 right-0 h-6 bg-gray-800 dark:bg-gray-700 flex items-center justify-center">
+          <div className="absolute top-0 left-0 right-0 h-6 bg-gray-800 dark:bg-gray-700 flex items-center justify-center z-10">
             <div className="w-12 h-1 bg-gray-600 rounded-full" />
           </div>
           <div className="absolute bottom-2 left-0 right-0 flex justify-center">
@@ -91,6 +93,9 @@ const DeviceMockup = ({ device }: { device: DeviceType }) => {
           </div>
         </>
       )}
+      <div className="absolute inset-0">
+        <img src={image} alt="" className="w-full h-full object-cover" style={{ objectFit: "cover" }} />
+      </div>
     </div>
   );
 };
@@ -126,7 +131,7 @@ export default function DesignSection() {
             <div className="relative w-full h-80 bg-gray-50 dark:bg-gray-700/30 rounded-lg overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center p-4">
                 {featuredProject.devices.map((device) => (
-                  <DeviceMockup key={`${featuredProject.id}-${device}`} device={device} />
+                  <DeviceMockup key={`${featuredProject.id}-${device}`} device={device} image={featuredProject.image} />
                 ))}
               </div>
             </div>
@@ -144,7 +149,7 @@ export default function DesignSection() {
               <div className="aspect-[4/3] bg-gray-50 dark:bg-gray-700/30 relative">
                 <div className="absolute inset-0 p-6 flex items-center justify-center">
                   {project.devices.map((device) => (
-                    <DeviceMockup key={`${project.id}-${device}`} device={device} />
+                    <DeviceMockup key={`${project.id}-${device}`} device={device} image={project.image} />
                   ))}
                 </div>
               </div>

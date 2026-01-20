@@ -27,7 +27,7 @@ const productionProjects: ProductionProject[] = [
     description: "A cinematic showcase of a luxury residential development, highlighting architectural details and lifestyle.",
     deliverables: ["4K Cinematic Film", "Drone Aerials", "Architectural Stills", "Social Media Cuts"],
     // TEMPORARY: Using placeholder image - Replace with actual production assets
-    thumbnail: "https://images.unsplash.com/photo-1600585154526-990dced4b2ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     aspectRatio: "aspect-[21/9]",
   },
   {

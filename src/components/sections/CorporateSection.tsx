@@ -27,7 +27,7 @@ const projects = [
     id: 4,
     title: "Product Packaging",
     description: "Luxury packaging design for premium consumer goods",
-    image: "https://images.unsplash.com/photo-1602143407151-a6214d5a910a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     size: "large" as const,
   },
 ];
