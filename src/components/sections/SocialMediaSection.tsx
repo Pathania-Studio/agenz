@@ -1,31 +1,60 @@
 import { cn } from "@/lib/utils";
 import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
+import Image from "next/image";
 
-const socialMediaPosts = [
+type SocialPlatform = "instagram" | "twitter" | "facebook" | "youtube";
+
+interface BasePost {
+  id: number;
+  platform: SocialPlatform;
+  username: string;
+}
+
+interface SocialPost extends BasePost {
+  platform: Exclude<SocialPlatform, "youtube">;
+  content: string;
+  image: string;
+  likes: string;
+  comments?: string;
+  retweets?: string;
+  shares?: string;
+}
+
+interface YoutubePost extends BasePost {
+  platform: "youtube";
+  title: string;
+  views: string;
+  timestamp: string;
+  thumbnail: string;
+}
+
+type SocialMediaPost = SocialPost | YoutubePost;
+
+const socialMediaPosts: SocialMediaPost[] = [
   {
     id: 1,
     platform: "instagram",
-    username: "@yourbrand",
-    content: "Check out our latest product launch! #newarrival",
-    image: "/images/social/instagram-1.jpg",
+    username: "@creative.media",
+    content: "Behind the scenes of our latest photoshoot. The details make all the difference. ✨ #photography #behindthescenes",
+    image: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     likes: "2.4k",
     comments: "143",
   },
   {
     id: 2,
     platform: "twitter",
-    username: "@yourbrand",
-    content: "Exciting news coming your way! Stay tuned for our big announcement tomorrow. #staytuned",
-    image: "/images/social/twitter-1.jpg",
+    username: "@creativemedia_hq",
+    content: "Just launched our new campaign! Check out how we're pushing creative boundaries this season. 🚀 #creativityunleashed #digitalmarketing",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
     retweets: "356",
     likes: "1.2k",
   },
   {
     id: 3,
     platform: "facebook",
-    username: "Your Brand",
-    content: "We're celebrating 1 million followers! Thank you for your incredible support. 🎉",
-    image: "/images/social/facebook-1.jpg",
+    username: "Creative Media Studios",
+    content: "We're celebrating 1 million followers! None of this would be possible without your incredible support. Here's to creating more amazing content together! 🎉 #milestone #thankyou",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     likes: "5.2k",
     comments: "324",
     shares: "1.1k",
@@ -33,11 +62,11 @@ const socialMediaPosts = [
   {
     id: 4,
     platform: "youtube",
-    username: "Your Brand",
+    username: "Creative Media",
     title: "Behind the Scenes: Making of Our Latest Campaign",
     views: "24.5K views",
     timestamp: "2 days ago",
-    thumbnail: "/images/social/youtube-1.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80",
   },
 ];
 
@@ -77,29 +106,39 @@ export default function SocialMediaSection() {
 
             {post.platform === "youtube" ? (
               <div className="aspect-w-16 aspect-h-9 mb-3 relative">
-                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <Youtube className="w-12 h-12 text-red-600" />
+                <div className="absolute inset-0">
+                  <Image src={post.thumbnail} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
+                </div>
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-black/60 rounded-full flex items-center justify-center">
+                    <Youtube className="w-8 h-8 text-white" />
+                  </div>
                 </div>
                 <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">{post.timestamp}</span>
               </div>
             ) : (
-              <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-3 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-gray-400">Image</span>
-                </div>
+              <div className="relative aspect-square rounded-lg mb-3 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                {"image" in post && <Image src={post.image} alt={post.content} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />}
               </div>
             )}
 
             <div className="space-y-2">
-              {post.platform === "youtube" && <h3 className="font-medium">{post.title}</h3>}
-              <p className="text-sm text-gray-600 dark:text-gray-300">{post.platform === "youtube" ? post.views : post.content}</p>
-
-              <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-4 pt-2">
-                {post.platform !== "youtube" && <span>{post.likes} likes</span>}
-                {post.comments && <span>{post.comments} comments</span>}
-                {post.retweets && <span>{post.retweets} retweets</span>}
-                {post.shares && <span>{post.shares} shares</span>}
-              </div>
+              {post.platform === "youtube" ? (
+                <>
+                  <h3 className="font-medium">{post.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{post.views}</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{post.content}</p>
+                  <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 space-x-4 pt-2">
+                    <span>{post.likes} likes</span>
+                    {post.comments && <span>{post.comments} comments</span>}
+                    {post.platform === "twitter" && post.retweets && <span>{post.retweets} retweets</span>}
+                    {post.platform === "facebook" && post.shares && <span>{post.shares} shares</span>}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
