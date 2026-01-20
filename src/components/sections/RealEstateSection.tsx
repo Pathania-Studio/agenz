@@ -1,99 +1,166 @@
 import { cn } from "@/lib/utils";
-import { Play } from "lucide-react";
+import { Play, Camera, Video, Drone, Image as ImageIcon } from "lucide-react";
+import Image from "next/image";
 
-const properties = [
+type ProjectType = "featured" | "standard";
+type MediaType = "cinematic" | "drone" | "stills" | "virtual-tour";
+
+interface ProductionProject {
+  id: number;
+  title: string;
+  client: string;
+  type: ProjectType;
+  mediaType: MediaType;
+  description: string;
+  deliverables: string[];
+  thumbnail: string;
+  aspectRatio?: string;
+}
+
+const productionProjects: ProductionProject[] = [
   {
     id: 1,
-    title: "Luxury Villa with Ocean View",
-    location: "Malibu, California",
-    price: "$4,200,000",
-    beds: 5,
-    baths: 4.5,
-    sqft: "4,200",
-    type: "video",
-    media: "/videos/property1.mp4",
-    thumbnail: "/images/real-estate/1.jpg",
+    title: "Luxury Development Series",
+    client: "Horizon Properties",
+    type: "featured",
+    mediaType: "cinematic",
+    description: "A cinematic showcase of a luxury residential development, highlighting architectural details and lifestyle.",
+    deliverables: ["4K Cinematic Film", "Drone Aerials", "Architectural Stills", "Social Media Cuts"],
+    // TEMPORARY: Using placeholder image - Replace with actual production assets
+    thumbnail: "https://images.unsplash.com/photo-1600585154526-990dced4b2ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+    aspectRatio: "aspect-[21/9]",
   },
   {
     id: 2,
-    title: "Modern Downtown Apartment",
-    location: "New York, NY",
-    price: "$1,850,000",
-    beds: 3,
-    baths: 2,
-    sqft: "2,100",
-    type: "image",
-    media: "/images/real-estate/2.jpg",
+    title: "Urban Living Campaign",
+    client: "Metro Living",
+    type: "standard",
+    mediaType: "stills",
+    description: "Editorial photography capturing the essence of contemporary urban living spaces.",
+    deliverables: ["Interior Photography", "Lifestyle Shots", "Detail Shots"],
+    // TEMPORARY: Using placeholder image - Replace with actual production assets
+    thumbnail: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     id: 3,
-    title: "Mountain Retreat",
-    location: "Aspen, Colorado",
-    price: "$3,750,000",
-    beds: 6,
-    baths: 5,
-    sqft: "5,800",
-    type: "video",
-    media: "/videos/property2.mp4",
-    thumbnail: "/images/real-estate/3.jpg",
+    title: "Coastal Estates",
+    client: "Azure Shores",
+    type: "standard",
+    mediaType: "drone",
+    description: "Aerial perspectives of exclusive coastal properties and their stunning surroundings.",
+    deliverables: ["Drone Footage", "Aerial Photography", "Site Overviews"],
+    // TEMPORARY: Using placeholder image - Replace with actual production assets
+    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: 4,
-    title: "Beachfront Penthouse",
-    location: "Miami, Florida",
-    price: "$6,500,000",
-    beds: 4,
-    baths: 4.5,
-    sqft: "3,800",
-    type: "image",
-    media: "/images/real-estate/4.jpg",
+    title: "Architectural Digest",
+    client: "Moderna Architects",
+    type: "standard",
+    mediaType: "virtual-tour",
+    description: "Interactive virtual tours showcasing innovative architectural design and space planning.",
+    deliverables: ["3D Virtual Tours", "Floor Plan Visualizations", "Matterport Integration"],
+    // TEMPORARY: Using placeholder image - Replace with actual production assets
+    thumbnail: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
   },
 ];
 
-export default function RealEstateSection() {
+const MediaTypeIcon = ({ type }: { type: MediaType }) => {
+  const icons = {
+    cinematic: <Video className="w-4 h-4" />,
+    drone: <Drone className="w-4 h-4" />,
+    stills: <Camera className="w-4 h-4" />,
+    "virtual-tour": <ImageIcon className="w-4 h-4" />,
+  };
+
+  const labels = {
+    cinematic: "Cinematic Film",
+    drone: "Aerial",
+    stills: "Photography",
+    "virtual-tour": "Virtual Tour",
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {properties.map((property) => (
-        <div key={property.id} className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800">
-          <div className="relative aspect-video bg-gray-200 dark:bg-gray-700">
-            {property.type === "video" ? (
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center z-10">
-                  <div className="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-gray-900 ml-1" fill="currentColor" />
-                  </div>
-                </div>
-                <img src={property.thumbnail} alt={property.title} className="w-full h-full object-cover" />
+    <div className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-300">
+      {icons[type]}
+      <span>{labels[type]}</span>
+    </div>
+  );
+};
+
+export default function RealEstateSection() {
+  const featuredProject = productionProjects.find((project) => project.type === "featured");
+  const otherProjects = productionProjects.filter((project) => project.type !== "featured");
+
+  return (
+    <div className="space-y-12">
+      {/* Featured Project */}
+      {featuredProject && (
+        <div className="group relative rounded-xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+          <div className={cn("relative", featuredProject.aspectRatio || "aspect-video", "bg-gray-50 dark:bg-gray-800")}>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 z-10 flex items-end p-6">
+              <div className="text-white">
+                <span className="inline-block text-sm font-medium mb-2 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">Featured Production</span>
+                <h2 className="text-2xl md:text-3xl font-bold mt-2">{featuredProject.title}</h2>
+                <p className="text-gray-200 text-sm mt-1">{featuredProject.client}</p>
               </div>
-            ) : (
-              <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-400">Property Image</span>
-              </div>
-            )}
-            <div className="absolute bottom-4 left-4 bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full">{property.type === "video" ? "Video Tour" : "Photo Gallery"}</div>
+            </div>
+            <div className="absolute top-4 right-4 z-10">
+              <MediaTypeIcon type={featuredProject.mediaType} />
+            </div>
+            <div className="relative w-full h-full">
+              <Image src={featuredProject.thumbnail} alt={`${featuredProject.title} - ${featuredProject.client}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px" priority />
+            </div>
           </div>
 
           <div className="p-6">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{property.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{property.location}</p>
-              </div>
-              <span className="text-2xl font-bold text-blue-600">{property.price}</span>
-            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{featuredProject.description}</p>
 
-            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex space-x-4 text-sm text-gray-600 dark:text-gray-300">
-                <span>{property.beds} Beds</span>
-                <span>{property.baths} Baths</span>
-                <span>{property.sqft} sq ft</span>
+            <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+              <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">DELIVERABLES</h4>
+              <div className="flex flex-wrap gap-2">
+                {featuredProject.deliverables.map((item, index) => (
+                  <span key={index} className="text-xs font-medium px-3 py-1.5 bg-gray-50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-200 rounded-full">
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
-
-            <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">View Property</button>
           </div>
         </div>
-      ))}
+      )}
+
+      {/* Other Projects */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {otherProjects.map((project) => (
+          <div key={project.id} className="group rounded-lg overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div className="aspect-[4/3] relative bg-gray-50 dark:bg-gray-800">
+              <div className="absolute top-3 right-3 z-10">
+                <MediaTypeIcon type={project.mediaType} />
+              </div>
+              <div className="relative w-full h-full">
+                <Image src={project.thumbnail} alt={`${project.title} - ${project.client}`} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+              </div>
+            </div>
+
+            <div className="p-5">
+              <h3 className="font-medium text-gray-900 dark:text-white">{project.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{project.client}</p>
+
+              <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.deliverables.slice(0, 2).map((item, index) => (
+                    <span key={index} className="text-xs px-2.5 py-1 bg-gray-50 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 rounded-full">
+                      {item}
+                    </span>
+                  ))}
+                  {project.deliverables.length > 2 && <span className="text-xs px-2.5 py-1 bg-gray-50 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 rounded-full">+{project.deliverables.length - 2} more</span>}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
