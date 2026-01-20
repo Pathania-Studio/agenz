@@ -11,8 +11,8 @@ export default function StickyStage() {
   useCorporateScroll(stageRef);
 
   return (
-    <div ref={stageRef} className="relative w-full">
-      <div className="w-full">
+    <div ref={stageRef} className="relative h-full w-full">
+      <div className="absolute inset-0 h-full w-full">
         <Screen1Authority />
         <Screen2ProofA />
         <Screen3ProofB />
