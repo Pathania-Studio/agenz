@@ -1,0 +1,5 @@
+{
+  "name": "Morpho Showcase",
+  "description": "A high-performance landing page featuring GSAP-powered device morphing (Mobile to Tablet to Laptop) with smooth scroll-triggered animations and responsive layouts.",
+  "requestFramePermissions": []
+}
