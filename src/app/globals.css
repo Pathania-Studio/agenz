@@ -79,3 +79,6 @@ body {
     }
   }
 }
+.video-focus-bg {
+  background-color: rgba(0, 0, 0, 0.85);
+}

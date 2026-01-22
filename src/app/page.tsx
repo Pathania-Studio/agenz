@@ -7,6 +7,7 @@ import ProductShootsSection from "@/components/sections/ProductShootsSection";
 import DesignSection from "@/components/sections/DesignSection";
 import LogoCarousel from "@/components/sections/LogoCarousel";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import HorizontalShowcase from "@/components/sections/HorizontalShowcase";
 
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
@@ -83,7 +84,9 @@ export default function Home() {
       <section className="w-full">
         <Hero />
       </section>
-
+      <section>
+        <HorizontalShowcase />
+      </section>
       {/* Corporate Section */}
       <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
