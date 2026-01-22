@@ -6,6 +6,7 @@ import HorizontalShowcase from "@/components/sections/HorizontalShowcase";
 import SelectedWorkSection from "@/components/selected-work/SelectedWorkSection";
 import BenefitSection from "@/components/BenefitSection";
 import TestimonialsWrapper from "@/components/sections/TestimonialsWrapper";
+import SocialMediaSection from "@/components/sections/SocialMediaSection";
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
   {
@@ -86,6 +87,9 @@ export default function Home() {
       </section>
       <section>
         <HorizontalShowcase />
+      </section>
+      <section>
+        <SocialMediaSection />
       </section>
       <section>
         <SelectedWorkSection />
