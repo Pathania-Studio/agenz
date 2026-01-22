@@ -1,14 +1,11 @@
 import Hero from "../components/Home/hero/Hero";
 // Section Components
-import CorporateSection from "@/components/sections/CorporateSection";
-import SocialMediaSection from "@/components/sections/SocialMediaSection";
-import RealEstateSection from "@/components/sections/RealEstateSection";
-import ProductShootsSection from "@/components/sections/ProductShootsSection";
-import DesignSection from "@/components/sections/DesignSection";
 import LogoCarousel from "@/components/sections/LogoCarousel";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import HorizontalShowcase from "@/components/sections/HorizontalShowcase";
-
+import SelectedWorkSection from "@/components/selected-work/SelectedWorkSection";
+import BenefitSection from "@/components/BenefitSection";
+import TestimonialsWrapper from "@/components/sections/TestimonialsWrapper";
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
   {
@@ -85,10 +82,16 @@ export default function Home() {
         <Hero />
       </section>
       <section>
+        <BenefitSection />
+      </section>
+      <section>
         <HorizontalShowcase />
       </section>
+      <section>
+        <SelectedWorkSection />
+      </section>
       {/* Corporate Section */}
-      <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">
+      {/* <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Corporate Storytelling</h2>
@@ -96,10 +99,10 @@ export default function Home() {
           </div>
           <CorporateSection />
         </div>
-      </section>
+      </section> */}
 
       {/* Social Media Section */}
-      <section id="social-media" className="py-20 bg-white dark:bg-gray-800">
+      {/* <section id="social-media" className="py-20 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Social Media Excellence</h2>
@@ -107,10 +110,10 @@ export default function Home() {
           </div>
           <SocialMediaSection />
         </div>
-      </section>
+      </section> */}
 
       {/* Real Estate Section */}
-      <section id="real-estate" className="py-20 bg-gray-50 dark:bg-gray-900">
+      {/* <section id="real-estate" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Estate Visuals</h2>
@@ -118,10 +121,10 @@ export default function Home() {
           </div>
           <RealEstateSection />
         </div>
-      </section>
+      </section> */}
 
       {/* Product Shoots Section */}
-      <section id="product-shoots" className="py-20 bg-white dark:bg-gray-800">
+      {/* <section id="product-shoots" className="py-20 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Product Photography</h2>
@@ -138,10 +141,10 @@ export default function Home() {
             <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">View Project</button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Design Section */}
-      <section id="design" className="py-20 bg-gray-50 dark:bg-gray-900">
+      {/* <section id="design" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Digital & Print Design</h2>
@@ -149,28 +152,16 @@ export default function Home() {
           </div>
           <DesignSection />
         </div>
-      </section>
+      </section> */}
 
       {/* Logo Carousel */}
-      <section className="py-16 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Trusted by Leading Brands</h2>
-            <p className="text-gray-600 dark:text-gray-300">We're proud to collaborate with innovative companies across various industries</p>
-          </div>
-          <LogoCarousel logos={COMPANY_LOGOS} />
-        </div>
+      <section className="py-16">
+        <LogoCarousel logos={COMPANY_LOGOS} />
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Client Success Stories</h2>
-            <p className="text-gray-600 dark:text-gray-300 text-lg">Hear from the brands we've helped transform through our creative solutions</p>
-          </div>
-          <TestimonialsSection testimonials={TESTIMONIALS} />
-        </div>
+      <section id="testimonials">
+        <TestimonialsWrapper testimonials={TESTIMONIALS} />
       </section>
     </main>
   );
