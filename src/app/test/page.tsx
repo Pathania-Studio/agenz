@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 //declare const gsap: any;
 // declare const ScrollTrigger: any;
 
-export default function SocialMediaSection() {
+export default function Page() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
