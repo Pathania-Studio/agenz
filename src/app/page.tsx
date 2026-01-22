@@ -92,9 +92,6 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Crafting compelling narratives for brands through authentic visual storytelling that resonates with stakeholders and drives engagement.</p>
           </div>
           <CorporateSection />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Featured: Annual Reports | Executive Portraits | Corporate Events | Internal Communications</p>
-          </div>
         </div>
       </section>
 
@@ -106,9 +103,6 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Creating scroll-stopping content that drives engagement and builds communities across all major platforms.</p>
           </div>
           <SocialMediaSection />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Platforms: Instagram | LinkedIn | Twitter | Facebook | TikTok | YouTube</p>
-          </div>
         </div>
       </section>
 
@@ -120,9 +114,6 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Showcasing properties in their best light with professional photography, videography, and virtual tours that sell before the first showing.</p>
           </div>
           <RealEstateSection />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Services: Architectural Photography | Aerial Drone Shots | Virtual Staging | 3D Walkthroughs</p>
-          </div>
         </div>
       </section>
 
@@ -134,8 +125,14 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Transforming products into compelling visual assets that drive e-commerce conversions and tell your brand's story.</p>
           </div>
           <ProductShootsSection />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Specializations: E-commerce | Lifestyle | Packshots | 360° Spins | Technical Details</p>
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 border-2 border-white dark:border-gray-800"></div>
+              ))}
+              <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs text-gray-500">+3</div>
+            </div>
+            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">View Project</button>
           </div>
         </div>
       </section>
@@ -148,9 +145,6 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Creating visually stunning designs that communicate your message effectively across all mediums.</p>
           </div>
           <DesignSection />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Expertise: Brand Identity | Web Design | Print Collateral | Marketing Materials | UI/UX</p>
-          </div>
         </div>
       </section>
 
@@ -173,9 +167,6 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-300 text-lg">Hear from the brands we've helped transform through our creative solutions</p>
           </div>
           <TestimonialsSection testimonials={TESTIMONIALS} />
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Average Client Satisfaction Rating: 4.8/5.0 across 120+ projects</p>
-          </div>
         </div>
       </section>
     </main>
