@@ -229,7 +229,7 @@ export default function WorkRow({ index, video, images }: Props) {
   return (
     <div ref={rowRef} className={`flex items-center gap-28 ${isReversed ? "flex-row-reverse" : ""}`}>
       {/* BIG VIDEO */}
-      <div ref={bigRef} className="relative w-[60%] h-[540px] rounded-3xl overflow-hidden bg-zinc-800">
+      <div ref={bigRef} className="relative w-[60%] h-[540px] rounded-3xl overflow-hidden">
         <video ref={videoRef} src={video} muted loop playsInline className="w-full h-full object-cover" />
 
         <div

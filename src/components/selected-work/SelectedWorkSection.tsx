@@ -8,7 +8,7 @@ export default function SelectedWorkSection() {
   ];
 
   return (
-    <section className="bg-black text-white py-32 space-y-48">
+    <section className="bg-transparent text-white max-w-[90%] m-auto py-32 space-y-48">
       {works.map((work, i) => (
         <WorkRow key={i} index={i} {...work} />
       ))}

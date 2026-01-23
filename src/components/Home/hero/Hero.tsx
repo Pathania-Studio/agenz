@@ -136,7 +136,7 @@ export default function Hero() {
                   fontWeight="800"
                   fill="white"
                 >
-                  agenz
+                  Agenz
                 </text>
               </mask>
             </defs>
