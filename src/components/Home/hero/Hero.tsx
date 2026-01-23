@@ -1,97 +1,170 @@
 "use client";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import AnimatedWord from "./AnimatedWord";
-import { useMouseGlow } from "./useMouseGlow";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const glowRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  const maskWrapRef = useRef<HTMLDivElement>(null);
+  const fullVideoRef = useRef<HTMLVideoElement>(null);
 
-  useMouseGlow(glowRef);
-  const words = ["Media", "Digital", "Creative", "Branding"];
-  const [index, setIndex] = useState(0);
+  useGSAP(() => {
+    if (
+      !heroRef.current ||
+      !logoRef.current ||
+      !maskWrapRef.current ||
+      !fullVideoRef.current
+    )
+      return;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2400);
-
-    return () => clearInterval(interval);
-  }, []);
-  // Ambient glow breathing
-  useEffect(() => {
-    if (!glowRef.current) return;
-
-    gsap.to(glowRef.current, {
-      scale: 1.1,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
+    /* -----------------------------
+       INITIAL STATES
+    ------------------------------ */
+    gsap.set(maskWrapRef.current, {
+      scale: 0.6,
+      opacity: 0,
+      transformOrigin: "center center",
     });
+
+    gsap.set(fullVideoRef.current, {
+      opacity: 0,
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom+=200% top", // 🔥 TOTAL = 3 SCROLLS
+        scrub: true,
+        pin: true,
+        pinSpacing: true, // 🔥 CRITICAL
+        anticipatePin: 1,
+      },
+    });
+
+    /* =================================================
+       SCROLL 1 — LOGO → TEXT (FAST)
+       ================================================= */
+    tl.to(logoRef.current, {
+      opacity: 0,
+      scale: 0.9,
+      ease: "power1.out",
+      duration: 1,
+    });
+
+    tl.to(
+      maskWrapRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+        ease: "power1.out",
+        duration: 1,
+      },
+      "<"
+    );
+
+    /* =================================================
+       SCROLL 2 — TEXT → FULLSCREEN VIDEO
+       ================================================= */
+    tl.to(maskWrapRef.current, {
+      scale: 5,
+      ease: "power2.inOut",
+      duration: 1,
+    });
+
+    tl.to(maskWrapRef.current, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power1.out",
+    });
+
+    tl.to(
+      fullVideoRef.current,
+      {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power1.out",
+      },
+      "<"
+    );
+
+    /* =================================================
+       SCROLL 3 — HOLD VIDEO (NO CHANGE)
+       ================================================= */
+    tl.to({}, { duration: 1 }); // 🔥 HOLD
+
   }, []);
 
   return (
     <section
-      className="
-        relative h-screen overflow-hidden text-white
-        bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.14),_transparent_60%),_linear-gradient(to_bottom,_#050505,_#000)]
-      ">
-      {/* Glow */}
-      <div
-        ref={glowRef}
-        className="
-          pointer-events-none absolute left-0 top-0 z-0
-          h-[340px] w-[340px] rounded-full
-          bg-[radial-gradient(circle,_rgba(168,85,247,0.35),_transparent_60%)]
-          blur-3xl opacity-80
-        "
+      ref={heroRef}
+      className="relative h-screen w-full overflow-hidden bg-black"
+    >
+      {/* LOGO */}
+      <img
+        ref={logoRef}
+        src="/logo.png"
+        alt="Agenz logo"
+        className="absolute inset-0 m-auto z-30 w-[420px]"
       />
 
-      {/* Grain */}
+      {/* TEXT MASK VIDEO */}
       <div
-        className="
-          pointer-events-none absolute inset-0 z-[1]
-          bg-[url('/noise.png')]
-          opacity-[0.035]
-          mix-blend-overlay
-        "
-      />
+        ref={maskWrapRef}
+        className="absolute inset-0 z-20 flex items-center justify-center"
+      >
+        <div className="w-[80vw] max-w-[1400px] aspect-[1600/600]">
+          <svg
+            viewBox="0 0 1600 600"
+            className="w-full h-full"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <mask id="text-mask">
+                <rect width="100%" height="100%" fill="black" />
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize="260"
+                  fontWeight="800"
+                  fill="white"
+                >
+                  agenz
+                </text>
+              </mask>
+            </defs>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* Heading */}
-          <h1
-            className="
-    flex items-center justify-center gap-3
-    text-4xl font-medium tracking-tight
-    leading-none
-    md:text-6xl
-  ">
-            {/* Animated word container */}
-            <span className="relative inline-flex w-[190px] justify-end">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={words[index]}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className=" absolute right-0 flex items-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
-                  <AnimatedWord word={words[index]} />
-                </motion.span>
-              </AnimatePresence>
-            </span>
-
-            {/* Static word */}
-            {/* <span className="text-white/90 font-semibold leading-none">Agency</span> */}
-          </h1>
-          {/* Logo */}
-          <img src="/logo.png" alt="Agenz" className="mx-auto mb-10 h-96 opacity-90" />
+            <foreignObject width="100%" height="100%" mask="url(#text-mask)">
+              <video
+                src="/videos/hero-bg.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </foreignObject>
+          </svg>
         </div>
       </div>
+
+      {/* FULLSCREEN VIDEO */}
+      <video
+        ref={fullVideoRef}
+        src="/videos/hero-bg.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 z-10 w-full h-full object-cover"
+      />
     </section>
   );
 }

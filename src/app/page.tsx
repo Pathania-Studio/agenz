@@ -1,3 +1,4 @@
+"use client";
 import Hero from "../components/Home/hero/Hero";
 // Section Components
 import LogoCarousel from "@/components/sections/LogoCarousel";
@@ -75,16 +76,34 @@ const TESTIMONIALS = [
     rating: 4,
   },
 ];
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+import { useEffect } from "react";
 export default function Home() {
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Create a single ScrollTrigger.refresh() call after all components are mounted
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+    // Cleanup
+    return () => {
+      clearTimeout(timer);
+      // Kill all ScrollTrigger instances on unmount
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-background">
+    <main className="min-h-screen w-full bg-background">
       {/* Hero Section */}
       <section className="w-full">
         <Hero />
       </section>
-      <section>
+      {/* <section>
         <BenefitSection />
-      </section>
+      </section> */}
       <section>
         <HorizontalShowcase />
       </section>
