@@ -7,6 +7,8 @@ import ProductShootsSection from "@/components/sections/ProductShootsSection";
 import DesignSection from "@/components/sections/DesignSection";
 import LogoCarousel from "@/components/sections/LogoCarousel";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import AnimatedWord from "@/components/Home/hero/AnimatedWord";
+import AnimatedCard from "@/components/sections/AnimatedCard";
 
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
@@ -80,9 +82,13 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-background">
       {/* Hero Section */}
+       
       <section className="w-full">
         <Hero />
       </section>
+     <section className="relative overflow-hidden">
+  <AnimatedCard />
+</section>
 
       {/* Corporate Section */}
       <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">

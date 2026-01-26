@@ -21,7 +21,7 @@ const DeviceMockup: React.FC<DeviceMockupProps> = ({ type, image, className = ''
         };
       case DeviceType.TABLET:
         return {
-          width: 'clamp(400px, 40vw, 550px)',
+          width: 'clamp(320px, 40vw, 410px)',
           aspectRatio: '4 / 3',
           borderRadius: '24px',
           borderWidth: '12px',
