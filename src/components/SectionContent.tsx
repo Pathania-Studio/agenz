@@ -15,7 +15,7 @@ const SectionContent: React.FC<SectionContentProps> = ({
   className = '' 
 }) => {
   return (
-    <div className={`flex flex-col justify-center w-full max-w-lg mx-auto ${className}`}>
+    <div className={`flex flex-col justify-center w-[500px] max-w-lg mx-auto ${className}`}>
       <div className="inline-flex items-center gap-2 mb-6">
         <span className="w-8 h-[2px] bg-blue-500"></span>
         <span className="text-blue-500 font-bold tracking-[0.2em] uppercase text-xs">
@@ -27,7 +27,7 @@ const SectionContent: React.FC<SectionContentProps> = ({
         {title}
       </h2>
       
-      <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-normal mb-10">
+      <p className="text-lg w-[50%] md:text-xl text-zinc-400 leading-relaxed font-normal mb-10">
         {description}
       </p>
       

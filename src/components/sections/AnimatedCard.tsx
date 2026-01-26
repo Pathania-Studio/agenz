@@ -2,8 +2,8 @@
 
 import { SECTIONS } from "../../../constants";
 import { DeviceType } from "../../../types";
-import DeviceMockup from "../../components/DeviceMockup";
-import SectionContent from "../../components/SectionContent";
+import DeviceMockup from "../DeviceMockup";
+import SectionContent from "../SectionContent";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useState } from "react";
@@ -66,14 +66,15 @@ export default function Page() {
     const mock1 = document.querySelector(".mock-1");
 
     gsap.set(mock1, {
-      left: "20%",
-      top: "300px",
-      xPercent: -120,
-      yPercent: -120,
-      rotationY: 0,
-      transformPerspective: 1200,
-      transformStyle: "preserve-3d",
-    });
+  left: "20%",
+  top: "300px",
+  xPercent: -120,
+  yPercent: -120,
+  rotationY: 0,
+  transformPerspective: 1200,
+  transformStyle: "preserve-3d",
+});
+
 
     gsap.to(mock1, {
       rotationY: 360,
