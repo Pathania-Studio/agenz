@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Colors */
+  --color-black: #222123;
+  --color-main-bg: #232224;
+  --color-white: #ffffff;
+  --color-dark-brown: #523122;
+  --color-mid-brown: #a26833;
+  --color-light-brown: #e3a458;
+  --color-red-brown: #7f3b2d;
+  --color-yellow-brown: #a26833;
+  --color-milk-yellow: #e3d3bc;
+  --color-red: #a02128;
+  --color-milk: #faeade;
+
+  /* Fonts */
+  --font-heading: "Antonio", sans-serif;
+  --font-paragraph: "Proxima Nova", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-paragraph);
+}
+
+.benefit-section {
+  @apply min-h-dvh overflow-hidden relative;
+  background: var(--color-black);
+
+  p {
+    color: var(--color-milk);
+    @apply font-normal text-center text-lg;
+  }
+
+  .first-title {
+    @apply rotate-[3deg] relative z-10;
+  }
+
+  .second-title {
+    @apply rotate-[-1deg] md:-translate-y-5;
+  }
+
+  .third-title {
+    @apply rotate-[1deg] md:-translate-y-12 relative z-10;
+  }
+
+  .fourth-title {
+    @apply rotate-[-5deg] md:-translate-y-12;
+  }
+
+  .vd-pin-section {
+    @apply md:h-[110vh] h-dvh overflow-hidden md:!-translate-y-[15%] md:mt-0 mt-20;
+
+    video {
+      @apply absolute inset-0 w-full h-full object-cover;
+    }
+
+    .play-btn {
+      @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+             size-[9vw] flex items-center justify-center
+             bg-white/10 backdrop-blur-xl rounded-full;
+    }
+
+    img:first-of-type {
+      @apply size-[15vw];
+    }
+  }
+}
+.video-focus-bg {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+/* globals.css */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
