@@ -6,7 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import WorkRow from "./WorkRow";
 
 gsap.registerPlugin(ScrollTrigger);
-
+//comment
 export default function SelectedWorkSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLSpanElement>(null);
