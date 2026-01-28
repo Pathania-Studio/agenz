@@ -12,6 +12,7 @@ import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import AnimatedWord from "@/components/Home/hero/AnimatedWord";
 import AnimatedCard from "@/components/sections/AnimatedCard";
 
+
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
   {
@@ -83,6 +84,7 @@ const TESTIMONIALS = [
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import { useEffect } from "react";
+import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
 export default function Home() {
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -112,6 +114,9 @@ export default function Home() {
       </section> */}
       <section>
         <HorizontalShowcase />
+      </section>
+      <section>
+        <StickyScrollRevealDemo/>
       </section>
       <section>
         <SocialMediaSection />
