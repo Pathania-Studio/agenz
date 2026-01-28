@@ -119,13 +119,12 @@ export default function Home() {
         <StickyScrollRevealDemo/>
       </section>
       <section>
-        <SocialMediaSection />
+        {/* <SocialMediaSection /> */}
       </section>
       <section>
         <SelectedWorkSection />
       </section>
      <section className="relative overflow-hidden">
-  <AnimatedCard />
 </section>
 
       {/* Corporate Section */}
