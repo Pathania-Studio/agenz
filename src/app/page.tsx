@@ -8,7 +8,13 @@ import SelectedWorkSection from "@/components/selected-work/SelectedWorkSection"
 import BenefitSection from "@/components/BenefitSection";
 import TestimonialsWrapper from "@/components/sections/TestimonialsWrapper";
 import SocialMediaSection from "@/components/sections/SocialMediaSection";
-import AnimatedBackground from "@/components/ui/AnimatedBackground";
+import dynamic from "next/dynamic";
+
+const AnimatedBackground = dynamic(
+  () => import("@/components/ui/AnimatedBackground"),
+  { ssr: false }
+);
+
 import AnimatedWord from "@/components/Home/hero/AnimatedWord";
 import AnimatedCard from "@/components/sections/AnimatedCard";
 
