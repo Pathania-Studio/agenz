@@ -13,28 +13,23 @@ export default function MobileReel() {
 
     gsap.to(el, {
       y: -height,
-      duration: 18,
+      duration: 20,
       ease: "none",
       repeat: -1,
     });
   }, []);
 
-  const videos = [
-    "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
-    "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
-    "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
-  ];
+  const video = "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4";
 
   return (
-    <div className="relative w-[360px] h-[720px] mx-auto">
+    <div className="relative w-[350px] h-[600px] mx-auto">
       {/* Phone Frame */}
-      {/* <img src="/images/phone-frame.png" alt="Phone" className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10" /> */}
-
+      <img src="/phone-frame.png" className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none" />
       {/* Screen */}
       <div className="absolute left-[8%] top-[5%] w-[84%] h-[90%] rounded-[2rem] overflow-hidden bg-black">
         <div ref={trackRef} className="flex flex-col gap-2">
-          {[...videos, ...videos].map((src, i) => (
-            <video key={i} src={src} autoPlay muted loop playsInline className="w-full h-[520px] object-cover rounded-xl" />
+          {[...Array(4), ...Array(4)].map((_, i) => (
+            <video key={i} src={video} autoPlay muted loop playsInline className="w-full h-[520px] object-cover rounded-xl" />
           ))}
         </div>
       </div>

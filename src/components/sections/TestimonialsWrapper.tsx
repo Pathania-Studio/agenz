@@ -67,7 +67,6 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
           <p ref={introRef} className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
             Testimonials
           </p>
-          {/* commecnt */}
           <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold leading-tight">
             {["What", "people", "say", "after", "working", "with", "us"].map((word, i) => (
               <span key={i} className="inline-block overflow-hidden mr-2">
