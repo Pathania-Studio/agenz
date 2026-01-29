@@ -72,7 +72,12 @@ export const StickyScroll = ({
       <div className="max-w-xl">
         {content.map((item, index) => (
           <div key={index} className="h-screen flex flex-col justify-center">
-            <h2 ref={(el) => (headingRefs.current[index] = el)} className="text-5xl md:text-7xl font-bold text-white leading-tight will-change-transform" style={{ opacity: index === 0 ? 1 : 0.15 }}>
+            <h2
+              ref={(el) => {
+                headingRefs.current[index] = el;
+              }}
+              className="text-5xl md:text-7xl font-bold text-white leading-tight will-change-transform"
+              style={{ opacity: index === 0 ? 1 : 0.15 }}>
               {item.title}
             </h2>
 
