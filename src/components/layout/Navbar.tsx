@@ -3,6 +3,7 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -34,7 +35,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="text-lg font-semibold">
-          Agenz
+          <Image src="/logo1.png" alt="Agenz Logo" width={120} height={40} priority className="h-8 w-auto object-contain" />
         </Link>
 
         {/* Nav links */}

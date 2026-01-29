@@ -5,86 +5,70 @@ import { StickyScroll } from "./ui/sticky-scroll-reveal";
 const content = [
   {
     title: "Social Media Content",
-    description:
-      "Optimized for smartphones. Your app looks perfect on every mobile device.",
+    description: "Optimized for smartphones. Your app looks perfect on every mobile device.",
     content: (
-      <div className="w-[220px] h-[440px] overflow-hidden pb-2 rounded-3xl border-4 border-neutral-800 bg-neutral-900 p-2 shadow-xl">
+      <div className="w-[320px] h-[540px] overflow-hidden pb-2 rounded-3xl border-4 border-neutral-800 bg-neutral-900 p-2 shadow-xl">
         <div className="h-2 w-16 mx-auto mb-3 rounded-full bg-neutral-800"></div>
-        <div className="h-[95%] rounded-2xl bg-black text-white grid place-content-center text-sm">
-          {/* <img className="h-[400px]" src="https://plus.unsplash.com/premium_photo-1740530840078-688751aa332c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8" alt="Mobile UI Mockup" />   */}
-          <video
-  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4"
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full h-[400px] object-cover rounded-xl"
-/>
+        <div className="h-[95%] rounded-2xl bg-black text-white overflow-hidden relative">
+          <div className="absolute inset-0 mobile-video-scroll flex flex-col gap-2 p-1">
+            {[
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+            ].map((src, i) => (
+              <video key={i} src={src} autoPlay muted loop playsInline className="w-full h-[400px] object-cover rounded-xl" />
+            ))}
+
+            {/* duplicate for seamless loop */}
+            {[
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+              "https://res.cloudinary.com/dhhb38ito/video/upload/v1769586570/5_Reasons_xqgpzk.mp4",
+            ].map((src, i) => (
+              <video key={"dup" + i} src={src} autoPlay muted loop playsInline className="w-full h-[400px] object-cover rounded-xl" />
+            ))}
+          </div>
         </div>
       </div>
     ),
   },
   {
     title: "Manage Social Media",
-    description:
-      "Beautiful layouts for tablets. More space, better interactions.",
-content: (
-  <div className="w-[370px] h-[500px] rounded-3xl border-4 border-neutral-800 bg-neutral-900 p-3 shadow-xl flex flex-col">
-    
-    {/* Camera notch */}
-    <div className="h-5 w-20 mx-auto mb-3 rounded-full bg-neutral-800"></div>
+    description: "Beautiful layouts for tablets. More space, better interactions.",
+    content: (
+      <div className="w-[370px] h-[500px] rounded-3xl border-4 border-neutral-800 bg-neutral-900 p-3 shadow-xl flex flex-col">
+        {/* Camera notch */}
+        <div className="h-5 w-20 mx-auto mb-3 rounded-full bg-neutral-800"></div>
 
-    {/* Screen */}
-    <div className="relative flex-1 rounded-2xl overflow-hidden bg-black">
+        {/* Screen */}
+        <div className="relative flex-1 rounded-2xl overflow-hidden bg-black">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="tablet-video-scroll flex h-full w-max">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <video key={i} src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769693544/Screen_Recording_2026-01-29_190002_wqima8.mp4" autoPlay muted loop playsInline className="h-full w-[370px] flex-shrink-0 object-cover" />
+              ))}
 
-      {/* Scrolling content */}
-      <div className="absolute inset-0">
-        <div className="tablet-scroll space-y-4 px-2">
-          
-          {/* Repeat images */}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <img
-              key={i}
-              className="w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
-              alt=""
-            />
-          ))}
-
-          {/* Duplicate once more for seamless loop */}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <img
-              key={"dup"+i}
-              className="w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
-              alt=""
-            />
-          ))}
-
+              {/* duplicate set for seamless loop */}
+              {Array.from({ length: 4 }).map((_, i) => (
+                <video key={"dup" + i} src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769693544/Screen_Recording_2026-01-29_190002_wqima8.mp4" autoPlay muted loop playsInline className="h-full w-[370px] flex-shrink-0 object-cover" />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-),
-
+    ),
   },
   {
     title: "Digital Marketing",
     description: "Full productivity on desktop and laptop screens.",
     content: (
-      <div className="w-[500px] h-[360px] overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900 shadow-xl">
-        <div className="flex items-center gap-2 px-3 py-2 border-b border-neutral-800 bg-neutral-950 rounded-t-xl">
-          <div className="flex gap-1">
-            <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-            <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-            <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-          </div>
-          <div className="ml-3 text-xs text-neutral-400 bg-neutral-800 px-2 py-1 rounded w-full">
-            https://yourapp.com
-          </div>
-        </div>
-        <div className="h-[100%] overflow-hidden grid place-content-center text-white">
-          <img className="h-[100%]" alt="" src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D" />
+      <div className="relative w-[620px] h-[420px] mx-auto">
+        {/* Laptop Frame */}
+        <img src="images/laptop-frame.png" alt="Laptop Mockup" className="w-full h-full object-contain pointer-events-none select-none" />
+
+        {/* Screen Content */}
+        <div className="absolute left-[12%] top-[8%] w-[76%] h-[74%] overflow-hidden rounded-md bg-black shadow-inner">
+          <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1" alt="App UI" className="w-full h-full object-cover" />
         </div>
       </div>
     ),

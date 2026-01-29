@@ -99,15 +99,26 @@ html.lenis {
   overflow: hidden;
 }
 
-@keyframes tabletAutoScroll {
-  from {
+@keyframes mobileVideoScroll {
+  0% {
     transform: translateY(0%);
   }
-  to {
+  100% {
     transform: translateY(-50%);
   }
 }
+.mobile-video-scroll {
+  animation: mobileVideoScroll 5s linear infinite;
+}
 
-.tablet-scroll {
-  animation: tabletAutoScroll 25s linear infinite;
+@keyframes tabletVideoScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.tablet-video-scroll {
+  animation: tabletVideoScroll 100s linear infinite;
 }
