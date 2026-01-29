@@ -14,13 +14,7 @@ export default function Hero() {
   const fullVideoRef = useRef<HTMLVideoElement>(null);
 
   useGSAP(() => {
-    if (
-      !heroRef.current ||
-      !logoRef.current ||
-      !maskWrapRef.current ||
-      !fullVideoRef.current
-    )
-      return;
+    if (!heroRef.current || !logoRef.current || !maskWrapRef.current || !fullVideoRef.current) return;
 
     /* -----------------------------
        INITIAL STATES
@@ -65,7 +59,7 @@ export default function Hero() {
         ease: "power1.out",
         duration: 1,
       },
-      "<"
+      "<",
     );
 
     /* =================================================
@@ -90,81 +84,45 @@ export default function Hero() {
         duration: 0.3,
         ease: "power1.out",
       },
-      "<"
+      "<",
     );
 
     /* =================================================
        SCROLL 3 — HOLD VIDEO (NO CHANGE)
        ================================================= */
     tl.to({}, { duration: 1 }); // 🔥 HOLD
-
   }, []);
 
   return (
-    <section
-      ref={heroRef}
-      className="relative h-screen w-full overflow-hidden "
-    >
+    <section ref={heroRef} className="relative h-screen w-full overflow-hidden ">
       {/* LOGO */}
-      <img
-        ref={logoRef}
-        src="/logo.png"
-        alt="Agenz logo"
-        className="absolute inset-0 m-auto z-30 w-[420px]"
-      />
+      <img ref={logoRef} src="/logo.png" alt="Agenz logo" className="absolute inset-0 m-auto z-30 w-[420px]" />
 
       {/* TEXT MASK VIDEO */}
-      <div
-        ref={maskWrapRef}
-        className="absolute inset-0 z-20 flex items-center justify-center"
-      >
+      <div ref={maskWrapRef} className="absolute inset-0 z-20 flex items-center justify-center">
         <div className="w-[80vw] max-w-[1400px] aspect-[1600/600]">
-          <svg
-            viewBox="0 0 1600 600"
-            className="w-full h-full"
-            preserveAspectRatio="xMidYMid meet"
-          >
+          <svg viewBox="0 0 1600 600" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
             <defs>
               <mask id="text-mask">
                 <rect width="100%" height="100%" fill="black" />
-                <text
-                  x="50%"
-                  y="50%"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="260"
-                  fontWeight="800"
-                  fill="white"
-                >
-                  Agenz
+                {/* SVG A LETTER */}
+                <image href="/a-letter.svg" x="300" y="180" width="200" height="240" fill="white" />
+
+                <text x="53%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="260" fontWeight="800" fill="white">
+                  genz
                 </text>
               </mask>
             </defs>
 
             <foreignObject width="100%" height="100%" mask="url(#text-mask)">
-              <video
-                src="/videos/hero-bg.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              <video src="/videos/hero-bg.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </foreignObject>
           </svg>
         </div>
       </div>
 
       {/* FULLSCREEN VIDEO */}
-      <video
-        ref={fullVideoRef}
-        src="/videos/hero-bg.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 z-10 w-full h-full object-cover"
-      />
+      <video ref={fullVideoRef} src="/videos/hero-bg.mp4" autoPlay muted loop playsInline className="absolute inset-0 z-10 w-full h-full object-cover" />
     </section>
   );
 }
