@@ -98,3 +98,16 @@ html.lenis {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+@keyframes tabletAutoScroll {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.tablet-scroll {
+  animation: tabletAutoScroll 25s linear infinite;
+}
