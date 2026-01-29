@@ -12,7 +12,6 @@ import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import AnimatedWord from "@/components/Home/hero/AnimatedWord";
 import AnimatedCard from "@/components/sections/AnimatedCard";
 
-
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
   {
@@ -105,7 +104,7 @@ export default function Home() {
     <main className="min-h-screen w-full bg-background">
       <AnimatedBackground />
       {/* Hero Section */}
-       
+
       <section className="w-full">
         <Hero />
       </section>
@@ -116,17 +115,15 @@ export default function Home() {
         <HorizontalShowcase />
       </section>
       <section>
-        <StickyScrollRevealDemo/>
+        <StickyScrollRevealDemo />
       </section>
-      <section>
+      {/* <section>
         <SocialMediaSection />
-      </section>
+      </section> */}
       <section>
         <SelectedWorkSection />
       </section>
-     <section className="relative overflow-hidden">
-  <AnimatedCard />
-</section>
+      <section className="relative overflow-hidden"></section>
 
       {/* Corporate Section */}
       {/* <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">
