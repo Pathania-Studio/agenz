@@ -60,7 +60,7 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
   }, []);
 
   return (
-    <section id="testimonials" ref={sectionRef} className=" pb-20">
+    <section id="testimonials" ref={sectionRef}>
       <div className="container mx-auto">
         {/* HEADER */}
         <div className="max-w-3xl mx-auto text-center ">

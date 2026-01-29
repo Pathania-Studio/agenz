@@ -67,7 +67,13 @@ export const StickyScroll = ({
   }, [activeCard]);
 
   return (
-    <div ref={ref} className="relative flex h-[300vh] justify-center gap-16 p-10 bg-neutral-950">
+    <div
+      ref={ref}
+      className="relative flex h-[300vh] justify-center gap-16 p-10
+  bg-[radial-gradient(circle_at_50%_20%,rgba(139,92,246,0.15),transparent_40%),
+      radial-gradient(circle_at_10%_60%,rgba(59,130,246,0.12),transparent_45%),
+      radial-gradient(circle_at_90%_70%,rgba(236,72,153,0.10),transparent_45%),
+      linear-gradient(to_bottom,#0a0a0f,#050507)]">
       {/* LEFT TEXT */}
       <div className="max-w-xl">
         {content.map((item, index) => (
