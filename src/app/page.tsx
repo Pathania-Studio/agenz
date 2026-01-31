@@ -87,6 +87,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
+import VideoCardCarousel from "@/components/VideoCardCarousel";
 export default function Home() {
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -121,9 +122,13 @@ export default function Home() {
         <StickyScrollRevealDemo />
       </section>
       <section>{/* <SocialMediaSection /> */}</section>
-      <section>
-        <SelectedWorkSection />
+      <section className="overflow-hidden">
+        <VideoCardCarousel/>
       </section>
+      <section>
+        {/* <SelectedWorkSection /> */}
+      </section>
+      
       <section className="relative overflow-hidden"></section>
 
       {/* Corporate Section */}
