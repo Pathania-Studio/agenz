@@ -161,8 +161,8 @@ gsap.to(textDesc, {
           containerAnimation: containerTween,
 
           // fully visible window
-          start: "left center+=160",
-          end: "right center-=160",
+          start: "left center+=220",
+          end: "right center-=220",
 
           onEnter: () => vid.play(),
           onEnterBack: () => vid.play(),
@@ -182,8 +182,8 @@ gsap.to(textDesc, {
       ScrollTrigger.create({
         trigger: heroCard,
         containerAnimation: containerTween,
-        start: "left center+=160",
-        end: "right center-=160",
+        start: "left center+=220",
+        end: "right center-=220",
 
         onEnter: () => {
           gsap.to(heroCard, {
@@ -267,6 +267,20 @@ gsap.to(textDesc, {
 
 
           {/* PREVIEW CARD */}
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+            <Video
+  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441488/1947CorporateCut_zenj0t.mp4"
+  className="w-full h-full object-cover"
+/>
+
+          </div>
+
+          {/* HERO VIDEO CARD */}
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+            <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441443/HustlehubReel_b5g0s7.mp4" loop playsInline className="w-full h-full object-cover" />
+
+            <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
+          </div>
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video
   src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441488/1947CorporateCut_zenj0t.mp4"
