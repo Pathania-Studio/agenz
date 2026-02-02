@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import Video from "./Video";
 
 // ✅ Infinite auto-scrolling center carousel
 // • Always 3 cards visible on desktop
@@ -12,40 +13,48 @@ import { motion } from "framer-motion";
 
 const baseCards = [
   {
-    video: "/videos/sample1.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
     images: [
-      "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+      "/images/1.jpg",
+      "/images/2.jpg",
     ],
   },
   {
-    video: "/videos/sample2.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
     images: [
-      "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
     ],
   },
   {
-    video: "/videos/sample3.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
     images: [
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      "/images/1.jpg",
+      "/images/2.jpg",
     ],
   },
   {
-    video: "/videos/sample4.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
     images: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
     ],
   },
   {
-    video: "/videos/sample4.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
     images: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      "/images/1.jpg",
+      "/images/2.jpg",
     ],
   },
+  {
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
+    images: [
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
+      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
+    ],
+  },
+  
 ];
 
 export default function VideoCardCarousel() {
@@ -98,12 +107,12 @@ export default function VideoCardCarousel() {
   const x = -(active * (cardWidth + GAP)) + centerOffset;
 
   return (
-    <div className="w-full py-14  bg-gray-500 overflow-hidden">
-      <div className="w-full -ml-[50px] mx-auto overflow-hidden px-4">
-        <h2 className="text-2xl font-bold text-white mb-10">Video Cards</h2>
+    <div className="w-full py-14 ">
+      <div className="w-full  -ml-[30px] mx-auto px-4">
+       
 
         <div
-          className="overflow-hidden"
+          className=""
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onTouchStart={() => setPaused(true)}
@@ -126,20 +135,24 @@ export default function VideoCardCarousel() {
                 <motion.div
                   key={i}
                   animate={{
-                    scale: isActive ? 1 : 0.82,
+                    scale: isActive ? 1.2 : 0.82,
                     opacity: isActive ? 1 : 0.45,
                   }}
                   transition={{ duration: 0.25 }}
                   className="bg-white rounded-2xl shadow-xl p-4 flex-shrink-0"
                   style={{ width: cardWidth }}
                 >
-                  <div className="w-full h-52 sm:h-60 rounded-xl overflow-hidden mb-4">
-                    <video
-                      src={card.video}
-                      className="w-full h-full object-cover"
-                      controls
-                    />
-                  </div>
+                  <div className="w-full aspect-video rounded-xl  mb-4">
+  <video
+    src={card.video}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-full object-cover"
+  />
+</div>
+
 
                   <div className="grid grid-cols-2 gap-3">
                     {card.images.map((img, idx) => (

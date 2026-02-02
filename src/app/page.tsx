@@ -126,7 +126,7 @@ export default function Home() {
         <VideoCardCarousel/>
       </section>
       <section>
-        {/* <SelectedWorkSection /> */}
+        <SelectedWorkSection />
       </section>
       
       <section className="relative overflow-hidden"></section>

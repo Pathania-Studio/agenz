@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased h-[100%] overflow-hidden`}>
 
         <Navbar />
         <ScrollProvider>{children}</ScrollProvider>
