@@ -18,13 +18,14 @@ export default function SelectedWorkSection() {
 
   const works = [
     { video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4", images: ["/images/1.jpg", "/images/2.jpg"] },
-    { video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4", images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"] },
+    {
+      video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
+      images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
+    },
   ];
 
   useLayoutEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
       /* TEXT */
@@ -139,10 +140,7 @@ export default function SelectedWorkSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[220vh] overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative min-h-[220vh] overflow-hidden">
       {/* BACKGROUND BLOBS */}
       <div className="pointer-events-none absolute inset-0 hidden lg:block">
         <div
@@ -162,9 +160,7 @@ export default function SelectedWorkSection() {
       {/* HEADER */}
       <div className="relative z-10 max-w-[90%] mx-auto pt-24 mb-56">
         <h2 className="relative text-[clamp(4rem,9vw,8rem)] font-semibold tracking-tight leading-none">
-          <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.35)]">
-            SELECTED WORK
-          </span>
+          <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.35)]">SELECTED WORK</span>
           <span ref={fillRef} className="absolute inset-0 text-white">
             SELECTED WORK
           </span>
@@ -173,8 +169,7 @@ export default function SelectedWorkSection() {
         <div ref={lineRef} className="mt-10 h-px w-44 bg-white/60 scale-x-0" />
 
         <p ref={descRef} className="mt-8 max-w-xl text-lg text-white/70">
-          A curated selection of projects blending design, motion,
-          and engineering into polished digital experiences.
+          A curated selection of projects blending design, motion, and engineering into polished digital experiences.
         </p>
       </div>
 

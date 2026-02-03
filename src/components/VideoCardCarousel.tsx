@@ -1,175 +1,140 @@
 "use client";
-import React, { useRef, useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
-import Video from "./Video";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-// ✅ Infinite auto-scrolling center carousel
-// • Always 3 cards visible on desktop
-// • Mobile unchanged (1 card feel)
-// • No arrows
-// • Auto scroll only right → left
-// • No reset jump (loop illusion)
-// • Pause on hover / touch
-
-const baseCards = [
+const data = [
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: [
-      "/images/1.jpg",
-      "/images/2.jpg",
-    ],
+    images: ["/images/1.jpg", "/images/2.jpg"],
   },
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
-    images: [
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
-    ],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
   },
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: [
-      "/images/1.jpg",
-      "/images/2.jpg",
-    ],
+    images: ["/images/1.jpg", "/images/2.jpg"],
   },
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
-    images: [
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
-    ],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
   },
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: [
-      "/images/1.jpg",
-      "/images/2.jpg",
-    ],
+    images: ["/images/1.jpg", "/images/2.jpg"],
   },
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
-    images: [
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg",
-      "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg",
-    ],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
   },
-  
 ];
 
-export default function VideoCardCarousel() {
-  const [paused, setPaused] = useState(false);
-  const [active, setActive] = useState(0);
-  const [cardWidth, setCardWidth] = useState(420); // desktop = 3 cards view
+export default function PremiumCarousel() {
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const videosRef = useRef<HTMLVideoElement[]>([]);
+  const fillRef = useRef<HTMLSpanElement>(null);
+  const [index, setIndex] = useState(0);
+  const total = data.length;
 
-  const GAP = 28;
+  const updatePositions = (active: number) => {
+    cardsRef.current.forEach((card, i) => {
+      let offset = i - active;
 
-  // duplicate cards for infinite illusion
-  const cards = useMemo(() => [...baseCards, ...baseCards, ...baseCards], []);
-  const baseLen = baseCards.length;
+      if (offset > total / 2) offset -= total;
+      if (offset < -total / 2) offset += total;
 
-  // responsive widths
+      let x = 0,
+        scale = 0.6,
+        rotateY = 0,
+        opacity = 0;
+
+      if (offset === 0) {
+        x = 0;
+        scale = 1;
+        rotateY = 0;
+        opacity = 1;
+      } else if (offset === -1) {
+        x = -520;
+        scale = 0.8;
+        rotateY = 35;
+        opacity = 0.6;
+      } else if (offset === 1) {
+        x = 520;
+        scale = 0.8;
+        rotateY = -35;
+        opacity = 0.6;
+      } else {
+        x = offset < 0 ? -700 : 700;
+      }
+
+      gsap.to(card, {
+        x,
+        scale,
+        rotateY,
+        opacity,
+        duration: 0.8,
+        ease: "power3.inOut",
+      });
+    });
+
+    videosRef.current.forEach((v, i) => {
+      if (!v) return;
+      i === active ? v.play() : v.pause();
+    });
+  };
+
   useEffect(() => {
-    const update = () => {
-      if (window.innerWidth < 640) setCardWidth(260);
-      else if (window.innerWidth < 1024) setCardWidth(320);
-      else setCardWidth(420); // 3 cards in viewport
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+    updatePositions(index);
 
-  // start from middle block so no edge reset visible
-  useEffect(() => {
-    setActive(baseLen);
-  }, [baseLen]);
-
-  // auto scroll → right to left only
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => {
-      setActive((v) => v + 1);
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % total);
     }, 3000);
-    return () => clearInterval(id);
-  }, [paused]);
 
-  // when reaching far end, jump back silently to middle block
-  useEffect(() => {
-    if (active > baseLen * 2) {
-      setActive(baseLen);
-    }
-  }, [active, baseLen]);
-
-  const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 1400;
-  const centerOffset = viewportWidth / 2 - cardWidth / 2;
-
-  const x = -(active * (cardWidth + GAP)) + centerOffset;
+    return () => clearInterval(interval);
+  }, [index]);
 
   return (
-    <div className="w-full py-14 ">
-      <div className="w-full  -ml-[30px] mx-auto px-4">
-       
-
-        <div
-          className=""
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setPaused(false)}
-        >
-          <motion.div
-            className="flex cursor-grab active:cursor-grabbing"
-            style={{ gap: GAP }}
-            drag="x"
-            onDragEnd={(e, info) => {
-              if (info.offset.x < -60) setActive((v) => v + 1);
-              if (info.offset.x > 60) setActive((v) => v - 1);
-            }}
-            animate={{ x }}
-            transition={{ type: "spring", stiffness: 120, damping: 18 }}
-          >
-            {cards.map((card, i) => {
-              const isActive = i === active;
-              return (
-                <motion.div
-                  key={i}
-                  animate={{
-                    scale: isActive ? 1.2 : 0.82,
-                    opacity: isActive ? 1 : 0.45,
+    <>
+      <div className="relative z-10 max-w-[90%] mx-auto pt-24">
+        <h2 className="relative text-[clamp(4rem,9vw,8rem)] font-semibold tracking-tight leading-none">
+          <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.35)]">SELECTED WORK</span>
+          <span ref={fillRef} className="absolute inset-0 text-white">
+            SELECTED WORK
+          </span>
+        </h2>
+      </div>
+      <div className="w-full h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative w-300 h-130 perspective-[2000px]">
+          {data.map((card, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                cardsRef.current[i] = el!;
+              }}
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-155  p-6 ">
+              <div className="h-95 mb-4 rounded-2xl overflow-hidden">
+                <video
+                  ref={(el) => {
+                    videosRef.current[i] = el!;
                   }}
-                  transition={{ duration: 0.25 }}
-                  className="bg-white rounded-2xl shadow-xl p-4 flex-shrink-0"
-                  style={{ width: cardWidth }}
-                >
-                  <div className="w-full aspect-video rounded-xl  mb-4">
-  <video
-    src={card.video}
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-full object-cover"
-  />
-</div>
+                  src={card.video}
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {card.images.map((img, idx) => (
-                      <img
-                        key={idx}
-                        src={img}
-                        alt=""
-                        className="w-full h-24 sm:h-28 object-cover rounded-xl"
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+              <div className="grid grid-cols-2 gap-3">
+                {card.images.map((img, j) => (
+                  <img key={j} src={img} className="w-full h-48 object-cover rounded-xl" />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
