@@ -123,13 +123,11 @@ export default function Home() {
       </section>
       <section>{/* <SocialMediaSection /> */}</section>
       <section className="overflow-hidden">
-        <VideoCardCarousel/>
+        <VideoCardCarousel />
       </section>
-      <section>
+      {/* <section className="overflow-hidden">
         <SelectedWorkSection />
-      </section>
-      
-      <section className="relative overflow-hidden"></section>
+      </section> */}
 
       {/* Corporate Section */}
       {/* <section id="corporate" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -196,7 +194,7 @@ export default function Home() {
       </section> */}
 
       {/* Logo Carousel */}
-      <section className="py-16">
+      <section className="pb-16 pt-40">
         <LogoCarousel logos={COMPANY_LOGOS} />
       </section>
 
