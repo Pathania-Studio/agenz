@@ -269,7 +269,7 @@ gsap.to(textDesc, {
           {/* PREVIEW CARD */}
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video
-  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441488/1947CorporateCut_zenj0t.mp4"
+  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353808/W_Ad_Films_kxvrhm.mp4"
   className="w-full h-full object-cover"
 />
 
@@ -277,13 +277,13 @@ gsap.to(textDesc, {
 
           {/* HERO VIDEO CARD */}
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
-            <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441443/HustlehubReel_b5g0s7.mp4" loop playsInline className="w-full h-full object-cover" />
+            <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353814/W_Promos_onlccd.mp4" loop playsInline className="w-full h-full object-cover" />
 
             <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
           </div>
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video
-  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441488/1947CorporateCut_zenj0t.mp4"
+  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353816/W_Corporate_Films_bqphi2.mp4"
   className="w-full h-full object-cover"
 />
 
@@ -291,7 +291,7 @@ gsap.to(textDesc, {
 
           {/* HERO VIDEO CARD */}
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
-            <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1769441443/HustlehubReel_b5g0s7.mp4" loop playsInline className="w-full h-full object-cover" />
+            <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353822/1_xazou5.mp4" loop playsInline className="w-full h-full object-cover" />
 
             <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
           </div>
