@@ -6,28 +6,28 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 const data = [
   {
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: ["/images/1.jpg", "/images/2.jpg"],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520204/003-Brunton_Residence10569_tiuam0.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520207/Bedroom_2_one_point_perspective_viirvf.jpg"],
   },
   {
-    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520210/Screenshot_2024-12-19_195129_lw6d8x.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520215/Screenshot_2024-12-19_193605_adipgk.png"],
+  },
+  {
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520217/Screenshot_2024-12-19_194923_bfldyu.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520219/Screenshot_2024-12-19_194314_co0efj.png"],
+  },
+  {
     images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
   },
   {
-    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: ["/images/1.jpg", "/images/2.jpg"],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520257/5123f0cc53f273327868db6913bcf086_1_tycxut.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png"],
   },
   {
-    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png"],
   },
-  {
-    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: ["/images/1.jpg", "/images/2.jpg"],
+   {
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520266/Screenshot_2025-01-28_205849_foy2s6.png"],
   },
-  {
-    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485276/Happilo_Video_1_bg1f8a.mp4",
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
-  },
+
 ];
 
 export default function PremiumCarousel() {
@@ -112,25 +112,90 @@ export default function PremiumCarousel() {
               ref={(el) => {
                 cardsRef.current[i] = el!;
               }}
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-155  p-6 ">
-              <div className="h-95 mb-4 rounded-2xl overflow-hidden">
-                <video
-                  ref={(el) => {
-                    videosRef.current[i] = el!;
-                  }}
-                  src={card.video}
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-155 p-6">
+              
+              {/* Video Section - Old Component */}
+              {card.video && (
+                <>
+                  <div className="h-95 mb-4 rounded-2xl overflow-hidden">
+                    <video
+                      ref={(el) => {
+                        videosRef.current[i] = el!;
+                      }}
+                      src={card.video}
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                {card.images.map((img, j) => (
-                  <img key={j} src={img} className="w-full h-48 object-cover rounded-xl" />
-                ))}
-              </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {card.images.map((img, j) => (
+                      <img key={j} src={img} className="w-full h-48 object-cover rounded-xl" />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Images Section */}
+              {!card.video && card.images && (
+                <div className="h-95 mb-4">
+                  {/* 1 Image - Full Width */}
+                  {card.images.length === 1 && (
+                    <div className="w-full h-full rounded-3xl overflow-hidden group cursor-pointer transition-all duration-500 hover:rounded-full hover:scale-105">
+                      <img
+                        src={card.images[0]}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+
+                  {/* 2 Images - 1 Column (Stacked) */}
+                  {card.images.length === 2 && (
+                    <div className="flex flex-col gap-3 h-[75vh]">
+                      <div className="flex-1 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
+                        <img
+                          src={card.images[0]}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
+                        <img
+                          src={card.images[1]}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 3+ Images - 2 Column Grid (1 Large Left, 2 Stacked Right) */}
+                  {card.images.length >= 3 && (
+                    <div className="grid grid-cols-2 gap-3 h-[75vh]">
+                      <div className="rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
+                        <img
+                          src={card.images[0]}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-3 h-full">
+                        <div className="flex-1 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
+                          <img
+                            src={card.images[1]}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="flex-1 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
+                          <img
+                            src={card.images[2]}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
