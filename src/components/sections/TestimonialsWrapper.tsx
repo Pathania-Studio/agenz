@@ -62,21 +62,6 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
   return (
     <section id="testimonials" ref={sectionRef}>
       <div className="container mx-auto">
-        {/* HEADER */}
-        <div className="max-w-3xl mx-auto text-center ">
-          <p ref={introRef} className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
-            Testimonials
-          </p>
-          <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold leading-tight">
-            {["What", "people", "say", "after", "working", "with", "us"].map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden mr-2">
-                <span className="word inline-block">{word}</span>
-              </span>
-            ))}
-          </h2>
-        </div>
-
-        {/* TESTIMONIALS */}
         <TestimonialsSection testimonials={testimonials} />
       </div>
     </section>

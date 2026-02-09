@@ -260,8 +260,7 @@ gsap.to(textDesc, {
   <p
     className="text-desc mt-8 text-lg text-zinc-400 max-w-md opacity-0"
   >
-    Award-winning digital experiences built with motion,
-    storytelling, and performance in mind.
+     Films and visual content crafted for brands, platforms, and scale.
   </p>
 </div>
 

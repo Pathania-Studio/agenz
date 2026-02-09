@@ -11,6 +11,7 @@ export const StickyScroll = ({
   content: {
     title: string;
     description: string;
+    pointers?: string[];
     content?: React.ReactNode;
   }[];
   contentClassName?: string;
@@ -90,6 +91,18 @@ export const StickyScroll = ({
             <motion.p animate={{ opacity: activeCard === index ? 1 : 0.3 }} transition={{ duration: 0.4 }} className="mt-8 text-neutral-300 text-lg md:text-xl">
               {item.description}
             </motion.p>
+
+            {/* POINTERS */}
+            {item.pointers && item.pointers.length > 0 && (
+              <motion.div animate={{ opacity: activeCard === index ? 1 : 0.2 }} transition={{ duration: 0.4 }} className="mt-6 space-y-3">
+                {item.pointers.map((pointer, pointerIndex) => (
+                  <div key={pointerIndex} className="flex items-start gap-3 group">
+                    <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 mt-2 group-hover:scale-125 transition-transform duration-300" />
+                    <span className="text-neutral-400 text-sm md:text-base leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">{pointer}</span>
+                  </div>
+                ))}
+              </motion.div>
+            )}
           </div>
         ))}
       </div>
