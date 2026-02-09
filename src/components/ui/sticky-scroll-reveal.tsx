@@ -108,7 +108,7 @@ export const StickyScroll = ({
       </div>
 
       {/* RIGHT STICKY MOCKUP */}
-      <div className={cn("sticky top-20 hidden h-[80vh] w-full max-w-[550px] lg:flex items-center justify-center", contentClassName)}>
+      <div className={cn("sticky top-20 hidden h-[80vh] w-full max-w-[750px] lg:flex items-center justify-center", contentClassName)}>
         <motion.div key={activeCard} initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: "easeOut" }} className="flex items-center justify-center">
           {content[activeCard].content}
         </motion.div>

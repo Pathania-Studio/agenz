@@ -14,9 +14,12 @@ interface Testimonial {
 
 interface TestimonialsSectionProps {
   testimonials: Testimonial[];
+  titleRef?: React.RefObject<HTMLHeadingElement | null>;
+  lineRef?: React.RefObject<HTMLDivElement | null>;
+  introRef?: React.RefObject<HTMLParagraphElement | null>;
 }
 
-export default function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
+export default function TestimonialsSection({ testimonials, titleRef, lineRef, introRef }: TestimonialsSectionProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -82,11 +85,16 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
         {/* LEFT EXPLAINER */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold leading-tight">
+          <h2 ref={titleRef} className="text-4xl font-bold leading-tight">
             What Our <br /> Clients Say
           </h2>
 
-          <p className="text-neutral-400 max-w-md"> Trusted by teams who value clarity, creativity, and execution.</p>
+          <div ref={lineRef} className="h-1 w-20 bg-gradient-to-r from-violet-500 to-blue-500" />
+
+          <p ref={introRef} className="text-neutral-400 max-w-md">
+            {" "}
+            Trusted by teams who value clarity, creativity, and execution.
+          </p>
         </div>
 
         {/* RIGHT INFINITE FLOW */}
