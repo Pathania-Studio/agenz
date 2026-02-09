@@ -95,6 +95,8 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className="relative h-screen w-full overflow-hidden ">
+
+
       {/* LOGO */}
       <img ref={logoRef} src="/logo.png" alt="Agenz logo" className="absolute inset-0 m-auto z-30 w-[420px]" />
 

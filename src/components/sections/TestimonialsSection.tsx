@@ -83,24 +83,10 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
         {/* LEFT EXPLAINER */}
         <div className="space-y-6">
           <h2 className="text-4xl font-bold leading-tight">
-            Trusted by <br /> ambitious teams
+            What Our <br /> Clients Say
           </h2>
 
-          <p className="text-neutral-400 max-w-md">Long-term partnerships built on trust, speed, and results.</p>
-
-          <div className="flex items-center gap-3">
-            <div className="flex text-yellow-400">★★★★★</div>
-            <span className="text-sm text-neutral-400">5.0 average rating</span>
-          </div>
-
-          <div className="flex gap-3 pt-6">
-            <button onClick={() => nudge(-1)} className="h-12 w-12 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
-              ←
-            </button>
-            <button onClick={() => nudge(1)} className="h-12 w-12 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
-              →
-            </button>
-          </div>
+          <p className="text-neutral-400 max-w-md"> Trusted by teams who value clarity, creativity, and execution.</p>
         </div>
 
         {/* RIGHT INFINITE FLOW */}

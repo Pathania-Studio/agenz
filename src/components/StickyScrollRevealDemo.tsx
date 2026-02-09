@@ -6,18 +6,15 @@ import MobileReel from "./MobileReel";
 
 const content = [
   {
-    title: "Social Media Content",
-    description: "Optimized for smartphones. Your app looks perfect on every mobile device.",
+    title: "Social Media & Content",
+    description: "Content, strategy, and management built for how people actually scroll.",
+    pointers: ["Short-form videos and social promos", "Content strategy and planning", "Platform-specific creatives", "Account management across social platforms"],
     content: <MobileReel />,
   },
   {
-    title: "Manage Social Media",
-    description: "Beautiful layouts for tablets. More space, better interactions.",
-    content: <TabletReel />,
-  },
-  {
-    title: "Digital Marketing",
-    description: "Full productivity on desktop and laptop screens.",
+    title: "Performance Marketing",
+    description: " Data-led campaigns focused on visibility, efficiency, and growth.",
+    pointers: ["Paid campaigns across search and social", "Funnel-based ad strategy", "Performance tracking and optimization", "Reporting and insights"],
     content: (
       <div className="relative w-[790px] h-[520px] mx-auto">
         {/* Laptop Frame */}
@@ -29,6 +26,12 @@ const content = [
         </div>
       </div>
     ),
+  },
+  {
+    title: "Branding & Design",
+    description: "Design systems that shape how brands look, feel, and communicate.",
+    pointers: ["Brand identity and logo systems", "Website design and UI/UX", "Brand collaterals and assets", "Visual consistency across platforms"],
+    content: <TabletReel />,
   },
 ];
 
