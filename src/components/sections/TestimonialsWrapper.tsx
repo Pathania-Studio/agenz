@@ -15,9 +15,18 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const words = titleRef.current!.querySelectorAll(".word");
+      // Check if refs exist before accessing them
+      if (!titleRef.current || !lineRef.current || !introRef.current) return;
 
-      gsap.set(words, { y: 80, opacity: 0 });
+      const words = titleRef.current.querySelectorAll(".word");
+
+      // Only animate words if they exist, otherwise animate the whole title
+      if (words.length > 0) {
+        gsap.set(words, { y: 80, opacity: 0 });
+      } else {
+        gsap.set(titleRef.current, { y: 80, opacity: 0 });
+      }
+
       gsap.set(lineRef.current, { scaleX: 0 });
       gsap.set(introRef.current, { y: 20, opacity: 0 });
 
@@ -33,8 +42,11 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
         opacity: 1,
         duration: 0.6,
         ease: "power3.out",
-      })
-        .to(
+      });
+
+      // Animate words if they exist, otherwise animate the whole title
+      if (words.length > 0) {
+        tl.to(
           words,
           {
             y: 0,
@@ -44,16 +56,29 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
             stagger: 0.08,
           },
           "-=0.2",
-        )
-        .to(
-          lineRef.current,
-          {
-            scaleX: 1,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-          "-=0.4",
         );
+      } else {
+        tl.to(
+          titleRef.current,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power4.out",
+          },
+          "-=0.2",
+        );
+      }
+
+      tl.to(
+        lineRef.current,
+        {
+          scaleX: 1,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.4",
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -62,7 +87,7 @@ export default function TestimonialsWrapper({ testimonials }: { testimonials: an
   return (
     <section id="testimonials" ref={sectionRef}>
       <div className="container mx-auto">
-        <TestimonialsSection testimonials={testimonials} />
+        <TestimonialsSection testimonials={testimonials} titleRef={titleRef} lineRef={lineRef} introRef={introRef} />
       </div>
     </section>
   );
