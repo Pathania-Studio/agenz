@@ -5,28 +5,61 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 const data = [
   {
+    title: "Real Estate",
+    subtitle: "Residential Architecture",
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1769485719/BrighChamps_Property_xlpqto.mp4",
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520204/003-Brunton_Residence10569_tiuam0.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520207/Bedroom_2_one_point_perspective_viirvf.jpg"],
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520204/003-Brunton_Residence10569_tiuam0.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520219/Screenshot_2024-12-19_194314_co0efj.png"],
   },
   {
+    title: "Product Shoots",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520263/Screenshot_2025-01-28_205803_fk9kdv.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520257/5123f0cc53f273327868db6913bcf086_1_tycxut.jpg"],
+  },
+  {
+    title: "Events",
     video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
     images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520210/Screenshot_2024-12-19_195129_lw6d8x.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520215/Screenshot_2024-12-19_193605_adipgk.png"],
   },
-  {
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520217/Screenshot_2024-12-19_194923_bfldyu.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520219/Screenshot_2024-12-19_194314_co0efj.png"],
+    {
+    title: "Real Estate",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520204/003-Brunton_Residence10569_tiuam0.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520207/Bedroom_2_one_point_perspective_viirvf.jpg"],
   },
   {
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
+    title: "Product Shoots",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520262/p8_39_xlaghv.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520266/Screenshot_2025-01-28_205849_foy2s6.png"],
   },
   {
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520257/5123f0cc53f273327868db6913bcf086_1_tycxut.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png"],
+    title: "Events",
+    video: "https://res.cloudinary.com/dhhb38ito/video/upload/v1770520255/W_Commercial_Spaces_rpzoce.mp4",
+    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520210/Screenshot_2024-12-19_195129_lw6d8x.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520215/Screenshot_2024-12-19_193605_adipgk.png"],
   },
-  {
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png"],
-  },
-   {
-    images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520266/Screenshot_2025-01-28_205849_foy2s6.png"],
-  },
+  // {
+  //   title: "Modern Living",
+  //   subtitle: "Contemporary Interior Design",
+  //   images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520217/Screenshot_2024-12-19_194923_bfldyu.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520219/Screenshot_2024-12-19_194314_co0efj.png"],
+  // },
+  // {
+  //   title: "Coworking Space",
+  //   subtitle: "Collaborative Environment",
+  //   images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1769486781/H210_F3_Coworking_Breakout_2_nfzadb.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1769486979/DSC02179s_1_gtqrfh.jpg"],
+  // },
+  // {
+  //   title: "Luxury Residence",
+  //   subtitle: "High-End Living Spaces",
+  //   images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520257/5123f0cc53f273327868db6913bcf086_1_tycxut.jpg", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png"],
+  // },
+  // {
+  //   title: "Urban Development",
+  //   subtitle: "City Planning & Architecture",
+  //   images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png"],
+  // },
+  //  {
+  //   title: "Mixed Use Complex",
+  //   subtitle: "Commercial & Residential Blend",
+  //   images: ["https://res.cloudinary.com/dhhb38ito/image/upload/v1770520259/p4_23_bczwab.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520264/p6_28_tiio5n.png", "https://res.cloudinary.com/dhhb38ito/image/upload/v1770520266/Screenshot_2025-01-28_205849_foy2s6.png"],
+  // },
 
 ];
 
@@ -55,17 +88,17 @@ export default function PremiumCarousel() {
         rotateY = 0;
         opacity = 1;
       } else if (offset === -1) {
-        x = -520;
+        x = -1060;
         scale = 0.8;
         rotateY = 35;
         opacity = 0.6;
       } else if (offset === 1) {
-        x = 520;
+        x = 1060;
         scale = 0.8;
         rotateY = -35;
         opacity = 0.6;
       } else {
-        x = offset < 0 ? -700 : 700;
+        x = offset < 0 ? -1030 : 1030;
       }
 
       gsap.to(card, {
@@ -112,12 +145,15 @@ export default function PremiumCarousel() {
               ref={(el) => {
                 cardsRef.current[i] = el!;
               }}
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-155 p-6">
-              
+              className="absolute top-0 left-1/2 -translate-x-1/2 p-6">
+              {/* Card Headings */}
+              <div className="text-center">
+                <h3 className="text-7xl font-bold text-white mb-2">{card.title}</h3>
+              </div>
               {/* Video Section - Old Component */}
               {card.video && (
-                <>
-                  <div className="h-95 mb-4 rounded-2xl overflow-hidden">
+                <div className="flex gap-4">
+                  <div className="h-[30rem] w-[70rem] mb-4 rounded-2xl overflow-hidden">
                     <video
                       ref={(el) => {
                         videosRef.current[i] = el!;
@@ -130,28 +166,26 @@ export default function PremiumCarousel() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {card.images.map((img, j) => (
-                      <img key={j} src={img} className="w-full h-48 object-cover rounded-xl" />
+                      <img key={j} src={img} className="w-[30rem] h-[15rem] object-cover rounded-xl overflow-hidden group transition-all duration-500 hover:scale-105" />
                     ))}
                   </div>
-                </>
+                </div>
               )}
 
               {/* Images Section */}
-              {!card.video && card.images && (
+              {/* {!card.video && card.images && (
                 <div className="h-95 mb-4">
-                  {/* 1 Image - Full Width */}
                   {card.images.length === 1 && (
                     <div className="w-full h-full rounded-3xl overflow-hidden group cursor-pointer transition-all duration-500 hover:rounded-full hover:scale-105">
                       <img
                         src={card.images[0]}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover "
                       />
                     </div>
                   )}
 
-                  {/* 2 Images - 1 Column (Stacked) */}
                   {card.images.length === 2 && (
                     <div className="flex flex-col gap-3 h-[75vh]">
                       <div className="flex-1 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
@@ -169,7 +203,6 @@ export default function PremiumCarousel() {
                     </div>
                   )}
 
-                  {/* 3+ Images - 2 Column Grid (1 Large Left, 2 Stacked Right) */}
                   {card.images.length >= 3 && (
                     <div className="grid grid-cols-2 gap-3 h-[75vh]">
                       <div className="rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105">
@@ -195,7 +228,7 @@ export default function PremiumCarousel() {
                     </div>
                   )}
                 </div>
-              )}
+              )} */}
             </div>
           ))}
         </div>
