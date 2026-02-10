@@ -266,12 +266,13 @@ gsap.to(textDesc, {
 
 
           {/* PREVIEW CARD */}
-          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-[0_0_40px_rgba(251,146,60,0.3),0_0_80px_rgba(30,58,138,0.2)] border border-orange-500/50">
             <Video
-  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353808/W_Ad_Films_kxvrhm.mp4"
-  className="w-full h-full object-cover"
-/>
-            {/* GRADIENT OVERLAY */}
+              src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353808/W_Ad_Films_kxvrhm.mp4"
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Enhanced gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
             {/* TEXT OVERLAY */}
@@ -283,9 +284,10 @@ gsap.to(textDesc, {
           </div>
 
           {/* HERO VIDEO CARD */}
-          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-[0_0_40px_rgba(251,146,60,0.3),0_0_80px_rgba(30,58,138,0.2)] border border-orange-500/50">
             <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353814/W_Promos_onlccd.mp4" loop playsInline className="w-full h-full object-cover" />
-            {/* GRADIENT OVERLAY */}
+            
+            {/* Enhanced gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
             {/* TEXT OVERLAY */}
@@ -296,12 +298,13 @@ gsap.to(textDesc, {
             </div>
             <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
           </div>
-          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-[0_0_40px_rgba(251,146,60,0.3),0_0_80px_rgba(30,58,138,0.2)] border border-orange-500/50">
             <Video
               src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353816/W_Corporate_Films_bqphi2.mp4"
               className="w-full h-full object-cover"
             />
-            {/* GRADIENT OVERLAY */}
+            
+            {/* Enhanced gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
             {/* TEXT OVERLAY */}
@@ -313,9 +316,10 @@ gsap.to(textDesc, {
           </div>
 
           {/* HERO VIDEO CARD */}
-          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
+          <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-[0_0_40px_rgba(251,146,60,0.3),0_0_80px_rgba(30,58,138,0.2)] border border-orange-500/50">
             <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353822/1_xazou5.mp4" loop playsInline className="w-full h-full object-cover" />
-            {/* GRADIENT OVERLAY */}
+            
+            {/* Enhanced gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
             {/* TEXT OVERLAY */}
