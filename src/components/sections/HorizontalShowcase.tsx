@@ -271,26 +271,59 @@ gsap.to(textDesc, {
   src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353808/W_Ad_Films_kxvrhm.mp4"
   className="w-full h-full object-cover"
 />
+            {/* GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
+            {/* TEXT OVERLAY */}
+            <div className="absolute inset-0 z-[3] flex items-center justify-center text-center px-6">
+              <h3 className="text-white text-[42px] md:text-[56px] font-semibold tracking-wide drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]">
+                Brand Films
+              </h3>
+            </div>
           </div>
 
           {/* HERO VIDEO CARD */}
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353814/W_Promos_onlccd.mp4" loop playsInline className="w-full h-full object-cover" />
+            {/* GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
+            {/* TEXT OVERLAY */}
+            <div className="absolute inset-0 z-[3] flex items-center justify-center text-center px-6">
+              <h3 className="text-white text-[42px] md:text-[56px] font-semibold tracking-wide drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]">
+                Ad Films
+              </h3>
+            </div>
             <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
           </div>
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video
-  src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353816/W_Corporate_Films_bqphi2.mp4"
-  className="w-full h-full object-cover"
-/>
+              src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353816/W_Corporate_Films_bqphi2.mp4"
+              className="w-full h-full object-cover"
+            />
+            {/* GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
 
+            {/* TEXT OVERLAY */}
+            <div className="absolute inset-0 z-[3] flex items-center justify-center text-center px-6">
+              <h3 className="text-white text-[42px] md:text-[56px] font-semibold tracking-wide drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]">
+                Corporate Films
+              </h3>
+            </div>
           </div>
 
           {/* HERO VIDEO CARD */}
           <div className="relative min-w-[820px] h-[520px] rounded-[32px] overflow-hidden bg-zinc-800 shadow-2xl">
             <Video src="https://res.cloudinary.com/dhhb38ito/video/upload/v1770353822/1_xazou5.mp4" loop playsInline className="w-full h-full object-cover" />
+            {/* GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-[2]" />
+
+            {/* TEXT OVERLAY */}
+            <div className="absolute inset-0 z-[3] flex items-center justify-center text-center px-6">
+              <h3 className="text-white text-[42px] md:text-[56px] font-semibold tracking-wide drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]">
+                Product & Promo Videos
+              </h3>
+            </div>
 
             <button className="mute-btn absolute top-4 right-4 z-10 opacity-0 pointer-events-none transition-opacity duration-300">🔇</button>
           </div>
