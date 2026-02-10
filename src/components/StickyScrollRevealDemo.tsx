@@ -18,7 +18,7 @@ const content = [
     content: (
       <div className="relative w-[790px] h-[520px] mx-auto">
         {/* Laptop Frame */}
-        <img src="images/laptop-frame.png" alt="Laptop Mockup" className="w-full h-full object-contain pointer-events-none select-none" />
+        <img src="/laptop.webp" alt="Laptop Mockup" className="w-full h-full object-contain pointer-events-none select-none" />
 
         {/* Screen Content */}
         <div className="absolute left-[12%] top-[13%] w-[76%] h-[74%] overflow-hidden rounded-md bg-black shadow-inner">
