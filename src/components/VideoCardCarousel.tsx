@@ -135,7 +135,9 @@ export default function PremiumCarousel() {
           <span ref={fillRef} className="absolute inset-0 text-white">
             SELECTED WORK
           </span>
+          
         </h2>
+        <p className="text-2xl"> Additional work across a broader range of projects.</p>
       </div>
       <div className="w-full h-screen flex items-center justify-center overflow-hidden">
         <div className="relative w-300 h-130 perspective-[2000px]">
@@ -168,7 +170,7 @@ export default function PremiumCarousel() {
 
                   <div className="grid grid-cols-1 gap-3">
                     {card.images.map((img, j) => (
-                      <img key={j} src={img} className="w-[30rem] h-[15rem] object-cover rounded-xl overflow-hidden group transition-all duration-500 hover:scale-105" />
+                      <img key={j} src={img} className="w-[30rem] h-[14rem] object-cover rounded-xl overflow-hidden group transition-all duration-500 hover:scale-105" />
                     ))}
                   </div>
                 </div>

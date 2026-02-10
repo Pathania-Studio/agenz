@@ -28,17 +28,18 @@ export default function MobileReel() {
     "https://res.cloudinary.com/dhhb38ito/video/upload/v1770354525/W_SM4_i1np6f.mp4",
   ];
   return (
-    <div className="relative w-[350px] h-[600px] mx-auto">
+    <div className="relative w-[350px] h-[650px] mx-auto">
       {/* Phone Frame */}
-      <img src="/phone-frame.png" className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none" />
+      <img src="/mobile.webp" className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none" />
       {/* Screen */}
-      <div className="absolute left-[8%] top-[3%] w-[84%] h-[95%] rounded-[2rem] overflow-hidden bg-black">
+      <div className="absolute left-[10%] top-[6%] w-[80%] h-[90%] rounded-[2rem] overflow-hidden bg-black">
         <div ref={trackRef} className="flex flex-col gap-2">
           {[...videos, ...videos].map((src, i) => (
             <Video key={i} src={src} className="w-full h-[520px] object-cover rounded-xl" />
           ))}
         </div>
       </div>
+      
     </div>
   );
 }
