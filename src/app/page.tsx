@@ -88,6 +88,7 @@ import { gsap } from "gsap";
 import { useEffect } from "react";
 import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
 import VideoCardCarousel from "@/components/VideoCardCarousel";
+import HeroNew from "@/components/Home/HeroNew";
 export default function Home() {
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -111,6 +112,7 @@ export default function Home() {
 
       <section className="w-full">
         <Hero />
+        {/* <HeroNew /> */}
       </section>
       {/* <section>
         <BenefitSection />
