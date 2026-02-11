@@ -1,19 +1,18 @@
 "use client";
-import Hero from "../components/Home/hero/Hero";
 // Section Components
-import LogoCarousel from "@/components/sections/LogoCarousel";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import HorizontalShowcase from "@/components/sections/HorizontalShowcase";
-import SelectedWorkSection from "@/components/selected-work/SelectedWorkSection";
-import BenefitSection from "@/components/BenefitSection";
+import LogoCarousel from "@/components/sections/LogoCarousel";
 import TestimonialsWrapper from "@/components/sections/TestimonialsWrapper";
-import SocialMediaSection from "@/components/sections/SocialMediaSection";
 import dynamic from "next/dynamic";
 
 const AnimatedBackground = dynamic(() => import("@/components/ui/AnimatedBackground"), { ssr: false });
 
-import AnimatedWord from "@/components/Home/hero/AnimatedWord";
-import AnimatedCard from "@/components/sections/AnimatedCard";
+import HeroSection from "@/components/Home/HeroSection";
+import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
+import VideoCardCarousel from "@/components/VideoCardCarousel";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
 
 // Brand assets from trusted sources (placeholder URLs)
 const COMPANY_LOGOS = [
@@ -83,12 +82,6 @@ const TESTIMONIALS = [
     rating: 4,
   },
 ];
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
-import { useEffect } from "react";
-import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
-import VideoCardCarousel from "@/components/VideoCardCarousel";
-import HeroNew from "@/components/Home/HeroNew";
 export default function Home() {
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -111,8 +104,8 @@ export default function Home() {
       {/* Hero Section */}
 
       <section className="w-full">
-        <Hero />
-        {/* <HeroNew /> */}
+        {/* <Hero /> */}
+        <HeroSection />
       </section>
       {/* <section>
         <BenefitSection />
