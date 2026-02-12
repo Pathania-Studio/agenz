@@ -83,12 +83,12 @@ export const StickyScroll = ({
               ref={(el) => {
                 headingRefs.current[index] = el;
               }}
-              className="text-5xl md:text-7xl font-bold text-white leading-tight will-change-transform"
+              className="text-5xl md:text-7xl font-bold text-white leading-tight will-change-transform animated-text glass-effect bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 transition-all duration-300 hover:bg-white/10"
               style={{ opacity: index === 0 ? 1 : 0.15 }}>
               {item.title}
             </h2>
 
-            <motion.p animate={{ opacity: activeCard === index ? 1 : 0.3 }} transition={{ duration: 0.4 }} className="mt-8 text-neutral-300 text-lg md:text-xl">
+            <motion.p animate={{ opacity: activeCard === index ? 1 : 0.3 }} transition={{ duration: 0.4 }} className="mt-8 text-neutral-300 text-lg md:text-xl animated-text">
               {item.description}
             </motion.p>
 
@@ -98,7 +98,7 @@ export const StickyScroll = ({
                 {item.pointers.map((pointer, pointerIndex) => (
                   <div key={pointerIndex} className="flex items-start gap-3 group">
                     <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 mt-2 group-hover:scale-125 transition-transform duration-300" />
-                    <span className="text-neutral-400 text-sm md:text-base leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">{pointer}</span>
+                    <span className="text-neutral-400 text-sm md:text-base leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 animated-text">{pointer}</span>
                   </div>
                 ))}
               </motion.div>

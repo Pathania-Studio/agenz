@@ -61,37 +61,35 @@ export default function MobileReel() {
 
         {/* Bottom Left Badge */}
         <div className="absolute bottom-1 right-20 -translate-x-1/2 -translate-y-1/2 w-[75%] z-20">
-          <div className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.25)] rounded-2xl p-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-white text-xs font-semibold tracking-wide">Efficiency Growth</span>
-              <span className="text-green-400 text-xs font-semibold">+24%</span>
-            </div>
+          <div className="floating-ui glass-effect bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.25)] rounded-2xl p-4 transition-all duration-300 hover:bg-white/20">
+            <div className="text-white text-xs font-semibold tracking-wide animated-text">Efficiency Growth</div>
+            <div className="text-green-400 text-xs font-semibold animated-text">+24%</div>
             <MiniGraph />
           </div>
         </div>
 
         {/* Top Left Badge */}
-        <div className={`absolute top-8 left-8 ${glass}`}>
+        <div className={`absolute top-8 left-8 floating-ui glass-effect ${glass} transition-all duration-300 hover:bg-white/20`}>
           <div className="flex items-center space-x-3">
             <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center border border-white/20">
               <Clock className="w-3.5 h-3.5 text-white" />
             </div>
             <div>
-              <div className="font-semibold text-sm">60% Less</div>
-              <div className="text-green-300 font-semibold text-xs">Manual Work</div>
+              <div className="font-semibold text-sm animated-text">60% Less</div>
+              <div className="text-green-300 font-semibold text-xs animated-text">Manual Work</div>
             </div>
           </div>
         </div>
 
         {/* Top Right Badge */}
-        <div className={`absolute top-8 right-8 ${glass}`}>
+        <div className={`absolute top-8 right-8 floating-ui glass-effect ${glass} transition-all duration-300 hover:bg-white/20`}>
           <div className="flex items-center space-x-3">
             <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center border border-white/20">
               <Clock className="w-3.5 h-3.5 text-white" />
             </div>
             <div>
-              <div className="font-semibold text-sm">2× Faster</div>
-              <div className="text-blue-300 font-semibold text-xs">Audits</div>
+              <div className="font-semibold text-sm animated-text">2× Faster</div>
+              <div className="text-blue-300 font-semibold text-xs animated-text">Audits</div>
             </div>
           </div>
         </div>

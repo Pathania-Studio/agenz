@@ -42,33 +42,33 @@ export default function TabletReel() {
       {/* Simple Floating Elements */}
       <div className="absolute inset-0 z-20 pointer-events-none">
         {/* bottom left badge */}
-        <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20">
+        <div className="absolute bottom-8 left-8 floating-ui glass-effect bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 transition-all duration-300 hover:bg-white/95">
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-gray-800 font-semibold text-lg">40%</span>
+            <span className="text-gray-800 font-semibold text-lg animated-text">40%</span>
           </div>
         </div>
         {/* top Left badge */}
-        <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20">
+        <div className="absolute top-8 left-8 floating-ui glass-effect bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 transition-all duration-300 hover:bg-white/95">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center">
               <Clock className="w-3 h-3 text-white" />
             </div>
             <div>
-              <div className="text-gray-800 font-semibold text-sm">60% Less</div>
-              <div className="text-green-600 font-bold text-xs">Manual Work</div>
+              <div className="text-gray-800 font-semibold text-sm animated-text">60% Less</div>
+              <div className="text-green-600 font-bold text-xs animated-text">Manual Work</div>
             </div>
           </div>
         </div>
         {/* top right badge */}
-        <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20">
+        <div className="absolute top-8 right-8 floating-ui glass-effect bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 transition-all duration-300 hover:bg-white/95">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center">
               <Clock className="w-3 h-3 text-white" />
             </div>
             <div>
-              <div className="text-gray-800 font-semibold text-sm">60% Less</div>
-              <div className="text-green-600 font-bold text-xs">Manual Work</div>
+              <div className="text-gray-800 font-semibold text-sm animated-text">60% Less</div>
+              <div className="text-green-600 font-bold text-xs animated-text">Manual Work</div>
             </div>
           </div>
         </div>
