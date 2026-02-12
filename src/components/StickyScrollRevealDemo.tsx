@@ -93,7 +93,7 @@ export function StickyScrollRevealDemo() {
 
               // Animate previous devices (shrinking out)
               for (let i = 0; i < index; i++) {
-                const prevDevice = devices[i];
+                const prevDevice = devices[i] as HTMLElement;
                 const shrinkProgress = Math.max(0, progress - 0.3);
                 
                 gsap.to(prevDevice, {
@@ -110,7 +110,7 @@ export function StickyScrollRevealDemo() {
 
               // Animate next devices (waiting to enter)
               for (let i = index + 1; i < devices.length; i++) {
-                const nextDevice = devices[i];
+                const nextDevice = devices[i] as HTMLElement;
                 
                 gsap.to(nextDevice, {
                   x: "100vw",
