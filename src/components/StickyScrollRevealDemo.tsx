@@ -1,28 +1,41 @@
 "use client";
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { StickyScroll } from "./ui/sticky-scroll-reveal";
 import TabletReel from "./TabletReel";
 import MobileReel from "./MobileReel";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const content = [
   {
     title: "Social Media & Content",
     description: "Content, strategy, and management built for how people actually scroll.",
     pointers: ["Short-form videos and social promos", "Content strategy and planning", "Platform-specific creatives", "Account management across social platforms"],
-    content: <MobileReel />,
+    content: <div className="device-container"><MobileReel /></div>,
   },
   {
     title: "Performance Marketing",
     description: " Data-led campaigns focused on visibility, efficiency, and growth.",
     pointers: ["Paid campaigns across search and social", "Funnel-based ad strategy", "Performance tracking and optimization", "Reporting and insights"],
     content: (
-      <div className="relative w-[790px] h-[520px] mx-auto">
-        {/* Laptop Frame */}
-        <img src="/laptop.webp" alt="Laptop Mockup" className="w-full h-full object-contain pointer-events-none select-none" />
+      <div className="device-container">
+        <div className="relative w-[790px] h-[520px] mx-auto">
+          {/* Laptop Frame */}
+          <img src="/laptop.webp" alt="Laptop Mockup" className="w-full h-full object-contain pointer-events-none select-none" />
 
-        {/* Screen Content */}
-        <div className="absolute left-[12%] top-[13%] w-[76%] h-[74%] overflow-hidden rounded-md bg-black shadow-inner">
-          <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1" alt="App UI" className="w-full h-full object-cover" />
+          {/* Screen Content */}
+          <div className="absolute left-[12%] top-[13%] w-[76%] h-[74%] overflow-hidden rounded-md bg-black shadow-inner">
+            <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1" alt="App UI" className="w-full h-full object-cover" />
+          </div>
+
+          {/* Enhanced Floating UI with Glass Effect */}
+          <div className="absolute top-8 right-8 floating-ui glass-effect bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-4 shadow-lg transition-all duration-300 hover:bg-white/20">
+            <div className="text-white text-sm font-semibold animated-text">Performance</div>
+            <div className="text-green-400 text-xs animated-text">+24%</div>
+          </div>
         </div>
       </div>
     ),
@@ -31,13 +44,196 @@ const content = [
     title: "Branding & Design",
     description: "Design systems that shape how brands look, feel, and communicate.",
     pointers: ["Brand identity and logo systems", "Website design and UI/UX", "Brand collaterals and assets", "Visual consistency across platforms"],
-    content: <TabletReel />,
+    content: <div className="device-container"><TabletReel /></div>,
   },
 ];
 
 export function StickyScrollRevealDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate all device containers with sophisticated scroll-based transitions
+      const devices = gsap.utils.toArray(".device-container");
+      
+      // Set initial state for all devices
+      devices.forEach((device: any, index) => {
+        gsap.set(device, {
+          x: index === 0 ? 0 : "100vw",
+          opacity: index === 0 ? 1 : 0,
+          rotationY: index === 0 ? 0 : 25,
+          rotationZ: index === 0 ? 0 : -5,
+          scale: index === 0 ? 1 : 0.7,
+          zIndex: devices.length - index
+        });
+      });
+
+      // Create sophisticated scroll-based animation
+      devices.forEach((device: any, index) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: device,
+            start: "top 60%",
+            end: "bottom 40%",
+            scrub: 1.5,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              
+              // Animate current device (growing in)
+              gsap.to(device, {
+                x: 0,
+                opacity: 1,
+                rotationY: 0,
+                rotationZ: 0,
+                scale: 1,
+                zIndex: devices.length,
+                duration: 0.5,
+                ease: "power3.out"
+              });
+
+              // Animate previous devices (shrinking out)
+              for (let i = 0; i < index; i++) {
+                const prevDevice = devices[i] as HTMLElement;
+                const shrinkProgress = Math.max(0, progress - 0.3);
+                
+                gsap.to(prevDevice, {
+                  x: "-20vw",
+                  opacity: 1 - shrinkProgress,
+                  rotationY: -15 * shrinkProgress,
+                  rotationZ: -3 * shrinkProgress,
+                  scale: 1 - (0.4 * shrinkProgress),
+                  zIndex: devices.length - (index - i),
+                  duration: 0.5,
+                  ease: "power3.inOut"
+                });
+              }
+
+              // Animate next devices (waiting to enter)
+              for (let i = index + 1; i < devices.length; i++) {
+                const nextDevice = devices[i] as HTMLElement;
+                
+                gsap.to(nextDevice, {
+                  x: "100vw",
+                  opacity: 0,
+                  rotationY: 25,
+                  rotationZ: -5,
+                  scale: 0.7,
+                  zIndex: devices.length - i,
+                  duration: 0.5,
+                  ease: "power3.inOut"
+                });
+              }
+            }
+          }
+        });
+
+        // Add subtle floating animation when active
+        tl.to(device, {
+          y: -3,
+          rotationZ: 0.5,
+          duration: 2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        });
+      });
+
+      // Enhanced text animation with stagger
+      const textElements = gsap.utils.toArray(".animated-text");
+      
+      textElements.forEach((element: any, index) => {
+        gsap.set(element, {
+          opacity: 0,
+          y: 30,
+          scale: 0.9,
+          filter: "blur(8px)"
+        });
+
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            end: "bottom 15%",
+            scrub: 1
+          }
+        });
+      });
+
+      // Floating UI elements with enhanced physics
+      const floatingElements = gsap.utils.toArray(".floating-ui");
+      
+      floatingElements.forEach((element: any, index) => {
+        gsap.set(element, {
+          opacity: 0,
+          scale: 0.3,
+          y: 20,
+          rotation: Math.random() * 8 - 4
+        });
+
+        gsap.to(element, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          rotation: 0,
+          duration: 0.5,
+          ease: "back.out(1.8)",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: 0.8
+          }
+        });
+
+        // Subtle floating when visible
+        gsap.to(element, {
+          y: -6,
+          rotation: 1.5,
+          duration: 1.8,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        });
+      });
+
+      // Glass morphism hover effects
+      const glassElements = gsap.utils.toArray(".glass-effect");
+      
+      glassElements.forEach((element: any) => {
+        element.addEventListener("mouseenter", () => {
+          gsap.to(element, {
+            backdropFilter: "blur(15px)",
+            backgroundColor: "rgba(255, 255, 255, 0.15)",
+            scale: 1.02,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        });
+
+        element.addEventListener("mouseleave", () => {
+          gsap.to(element, {
+            backdropFilter: "blur(8px)",
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            scale: 1,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        });
+      });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="w-full py-4">
+    <div ref={containerRef} className="w-full py-4">
       <StickyScroll content={content} />
     </div>
   );

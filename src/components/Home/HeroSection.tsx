@@ -12,7 +12,6 @@ export default function HeroSection() {
   const logoRef = useRef<HTMLImageElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const desc1Ref = useRef<HTMLDivElement | null>(null);
-  const desc2Ref = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const dataWrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -61,8 +60,7 @@ export default function HeroSection() {
 
     tl.to(logoRef.current, { scale: 0.7, y: -80, opacity: 0.6 })
       .fromTo(desc1Ref.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, "<0.2")
-      .fromTo(desc2Ref.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, "<0.3");
-
+      
     // DATA LAYER REVEAL
     gsap.fromTo(
       dataWrapRef.current,
@@ -134,12 +132,6 @@ export default function HeroSection() {
         <div ref={desc1Ref} className="absolute bottom-40 w-[80%] md:w-[50%] glass-card text-center">
           <p className="text-white text-lg">
             We craft futuristic digital experiences powered by AI & design intelligence.
-          </p>
-        </div>
-
-        <div ref={desc2Ref} className="absolute bottom-20 w-[80%] md:w-[50%] glass-card text-center">
-          <p className="text-white text-lg">
-            Building brands that live at the intersection of creativity & technology.
           </p>
         </div>
 
